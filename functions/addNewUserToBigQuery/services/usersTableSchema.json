@@ -1,0 +1,98 @@
+{
+    "fields": [
+        {
+            "name": "uid",
+            "type": "STRING",
+            "mode": "REQUIRED"
+        },
+        {
+            "name": "disabled",
+            "type": "BOOLEAN"
+        },
+        {
+            "name": "displayName",
+            "type": "STRING"
+        },
+        {
+            "name": "email",
+            "type": "STRING"
+        },
+        {
+            "name": "emailVerified",
+            "type": "BOOLEAN"
+        },
+        {
+            "name": "metadata",
+            "type": "RECORD",
+            "fields": [
+                {
+                    "name": "creationTime",
+                    "type": "TIMESTAMP"
+                },
+                {
+                    "name": "lastRefreshTime",
+                    "type": "TIMESTAMP"
+                },
+                {
+                    "name": "lastSignInTime",
+                    "type": "TIMESTAMP"
+                }
+            ]
+        },
+        {
+            "name": "passwordHash",
+            "type": "STRING" 
+        },
+        {
+            "name": "passwordSalt",
+            "type": "STRING"
+        },
+        {
+            "name": "phoneNumber",
+            "type": "STRING"
+        },
+        {
+            "name": "photoURL",
+            "type": "STRING"
+        },
+        {
+            "name": "providerData",
+            "type": "RECORD",
+            "mode": "REPEATED",
+            "fields": [        
+                {
+                    "name": "displayName",
+                    "type": "STRING"
+                },
+                {
+                    "name": "email",
+                    "type": "STRING"
+                },
+                {
+                    "name": "phoneNumber",
+                    "type": "STRING"
+                },
+                {
+                    "name": "photoURL",
+                    "type": "STRING"
+                },
+                {
+                    "name": "providerId",
+                    "type": "STRING"
+                },
+                {
+                    "name": "uid",
+                    "type": "STRING"
+                }
+            ]
+        },
+        {
+            "name": "tenantId" ,
+            "type": "STRING"  
+        },
+        {
+            "name": "tokensValidAfterTime",
+            "type": "TIMESTAMP"
+        }   
+    ]
+}

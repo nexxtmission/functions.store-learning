@@ -1,0 +1,16 @@
+{
+    "name": "addNewUserToFirestore",
+    "description": "Add a user to Firestore when the user signs up.",
+    "tags": [ "firestore", "new user", "sign up" ],
+    "trigger": {
+        "provider": "auth",
+        "event": "user.create"
+    },
+    "env": [
+        {
+            "name": "FIRESTORE_COLLECTION_PATH",
+            "description": "The collection path that will be used to save the users",
+            "required": true
+        }
+    ]
+}

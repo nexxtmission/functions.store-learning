@@ -1,0 +1,17 @@
+{
+    "env": {
+        "commonjs": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "airbnb-base", "plugin:jest/recommended"
+    ],
+    "plugins": ["promise", "jest"],
+    "parserOptions": {
+        "ecmaVersion": 12
+    },
+    "rules": {
+        "indent": ["error", 4, { "SwitchCase": 1 }]
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "name": "sendSignUpWelcomeEmail",
+    "description": "Send a welcome email when users sign up throughout a SendGrid template.",
+    "tags": [ "sendGrid", "sign up", "email"],
+    "trigger": {
+        "provider": "auth",
+        "event": "user.create"
+    },
+    "env": [
+        {
+            "name": "SENDGRID_API_KEY",
+            "description": "The API key to authenticate access to SendGrid services.",
+            "required": true
+        },
+        {
+            "name": "SENDGRID_SENDER_EMAIL",
+            "description": "Email corresponding to SendGrid sender correctly verified.",
+            "required": true
+        },
+        {
+            "name": "SENDGRID_TEMPLATE_ID",
+            "description": "The ID of SendGrid dynamic template that will be used to generate the welcome email.",
+            "required": true
+        }
+    ]
+}

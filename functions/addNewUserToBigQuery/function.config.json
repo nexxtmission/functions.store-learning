@@ -1,0 +1,21 @@
+{
+    "name": "addNewUserToBigQuery",
+    "description": "Add a new user record to BigQuery when the user signs up.",
+    "tags": [ "bigquery", "new user", "sign up" ],
+    "trigger": {
+        "provider": "auth",
+        "event": "user.create"
+    },
+    "env": [
+        {
+            "name": "DATASET_NAME",
+            "description": "The name of the dataset to store the users",
+            "required": true
+        },
+        {
+            "name": "USERS_TABLE_NAME",
+            "description": "The name of the table to store the users",
+            "required": true
+        }
+    ]
+}
