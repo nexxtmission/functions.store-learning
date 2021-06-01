@@ -74,7 +74,6 @@ workflows:
         jobs:
             - build_and_test_functions
             - push_fstore:
-                context: functions.store-learning.dev
                 requires:
                     - build_and_test_functions
                 filters:
