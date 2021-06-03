@@ -31,7 +31,7 @@ jobs:
             - *save_cache
             - run:
                 name: Install fstore
-                command: npm install --prefix=$HOME/.local --global @fstore/cli@0.4.1-canary.3
+                command: npm install --prefix=$HOME/.local --global @fstore/cli@0.4.1-canary.5
             - run:
                 name: Login fstore
                 command: fstore login --token $FSTORE_TOKEN
@@ -60,7 +60,7 @@ jobs:
                 command: yarn install && yarn bootstrap
             - run:
                 name: Install fstore
-                command: npm install --prefix=$HOME/.local --global @fstore/cli@0.4.1-canary.3
+                command: npm install --prefix=$HOME/.local --global @fstore/cli@0.4.1-canary.5
             - run:
                 name: Login fstore
                 command: fstore login --token $FSTORE_TOKEN
