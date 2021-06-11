@@ -4,7 +4,6 @@
     "tags": [
         "firestore",
         "new user",
-        "sign up",
         "authentication"
     ],
     "trigger": {

@@ -3,7 +3,6 @@
     "description": "Send a welcome email when users sign up throughout a SendGrid template.",
     "tags": [
         "sendGrid",
-        "sign up",
         "email",
         "authentication"
     ],
