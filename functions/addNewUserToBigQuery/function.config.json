@@ -1,7 +1,12 @@
 {
     "name": "addNewUserToBigQuery",
     "description": "Add a new user record to BigQuery when the user signs up.",
-    "tags": [ "bigquery", "new user", "sign up" ],
+    "tags": [
+        "bigquery",
+        "new user",
+        "sign up",
+        "authentication"
+    ],
     "trigger": {
         "provider": "auth",
         "event": "user.create"
