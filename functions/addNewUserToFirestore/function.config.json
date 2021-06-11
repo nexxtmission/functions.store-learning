@@ -1,7 +1,11 @@
 {
     "name": "addNewUserToFirestore",
     "description": "Add a user to Firestore when the user signs up.",
-    "tags": [ "firestore", "new user", "sign up" ],
+    "tags": [
+        "firestore",
+        "new user",
+        "authentication"
+    ],
     "trigger": {
         "provider": "auth",
         "event": "user.create"
