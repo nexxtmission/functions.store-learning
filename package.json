@@ -13,6 +13,7 @@
     "@fstore/cli": "^0.7.1",
     "eslint": "^7.20.0",
     "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-fstore": "^0.0.5",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jest": "^24.1.5",
     "eslint-plugin-promise": "^4.3.1",
