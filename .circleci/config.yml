@@ -20,7 +20,7 @@ jobs:
           command: yarn fstore:lint
       - run:
           name: Run Jest Test
-          command: yarn test --runInBand --ci --coverage --reporters=default --reporters=jest-junit
+          command: yarn test --runInBand --ci --coverage --reporters=default --reporters=jest-junit && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
           environment:
             JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
       - store_test_results:
