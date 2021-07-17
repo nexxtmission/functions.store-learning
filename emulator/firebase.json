@@ -7,7 +7,7 @@
     "rules": "storage.rules"
   },
   "functions": {
-    "source": "."
+    "source": "functions"
   },
   "emulators": {
     "auth": {
