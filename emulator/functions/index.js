@@ -14,12 +14,12 @@ process.env.SENDGRID_TEMPLATE_ID = 'your_sendgrid_template_id';
 
 exports.addNewUserToBigQuery = functions.auth
     .user()
-    .onCreate(require('../../functions/addNewUserToBigQuery/main.js'));
+    .onCreate(require('../../functions/addNewUserToBigQuery/main'));
 
 exports.addNewUserToFirestore = functions.auth
     .user()
-    .onCreate(require('../../functions/addNewUserToFirestore/main.js'));
+    .onCreate(require('../../functions/addNewUserToFirestore/main'));
 
 exports.sendSignUpWelcomeEmail = functions.auth
     .user()
-    .onCreate(require('../../functions/sendSignUpWelcomeEmail/main.js'));
+    .onCreate(require('../../functions/sendSignUpWelcomeEmail/main'));
