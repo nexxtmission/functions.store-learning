@@ -1,28 +1,28 @@
 ### How this function works
 
-Use this function to automatically delete a user's data if the user is deleted from your authenticated users.
+Use this function to automatically delete all user's data when deleted from your authenticated users.
 
-You can configure this extension to delete user data from any or all of the following: Cloud Firestore, Realtime Database, or Cloud Storage. Each trigger of the extension to delete data is keyed to the user's UserId.
+You can configure this function to delete user data from any or all of the following: Cloud Firestore, Realtime Database, or Cloud Storage. Data must be keyed to the user's UserId.
 
-Note: To use this extension, you need to manage your users with Firebase Authentication.
+> **Note:** To use this extension, you need to manage your users with Firebase Authentication.
 
-This extension is useful in respecting user privacy and fulfilling compliance requirements. However, using this extension does not guarantee compliance with government and industry regulations.
-
-### Prerequisites
-
-* You must have previous knowledge of **BigQuery**.
-* You must have previous knowledge of **Firestore**.
+This function is useful in respecting user privacy and fulfilling compliance requirements. However, its use does not guarantee compliance with government and industry regulations.
 
 ### Function details
 To install this function, you must specify the path to the Firestore collection, the name of the dataset, the table, and the view. Add the required information to the form with the following parameters:
 
-* **Document Path**: The document path that you'd like this function to listen to. A placeholder should be used for the document id (e.g., `users/{userId}`).
-* **DATASET_NAME**: The name of the dataset to store the documents.
-* **TABLE_NAME**: The name of the table to store the documents.
-* **VIEW_NAME**: The name of the view that represents the current state of the data.
+- **FIRESTORE_DELETE_RECURSIVE**: Recursively delete documents subcollections. (Cloud Firestore only)
+- **FIRESTORE_PATHS**: A comma separated list of full paths that contain user data in your Cloud Firestore instance. Leave empty if you don't use Cloud Firestore. (You can represent the User ID of the deleted user with `{UID}`. Ex: users/{UID})
+- **REALTIME_DATABASE_INSTANCE**: The Realtime Database instance where you want to delete user data
+- **REALTIME_DATABASE_PATHS**: A comma separated list of full paths that contain user data in your Realtime Database instance. Leave empty if you don't use Realtime Database. (You can represent the User ID of the deleted user with `{UID}`. Ex: users/{UID})
+- **STORAGE_DEFAULT_BUCKET**: The name of the default bucket to be used.
+- **STORAGE_PATHS**: A comma separated list of full paths to files or directories in your buckets in Google Cloud Storage. Leave empty if you don't use Cloud Storage. (You can use `{UID}` to represent the User ID and `{DEFAULT}` to represent your default Storage bucket. Ex: `{DEFAULT}/{UID}-pic.png,my-app-logs/{UID}-logs.txt`)
+
+> **Note:** You can also use other wildcards to represent user's UserId: `{user}`, `{userId}`, `{uid}` or `{id}`. Lower an upper letters are treated as equal.
 
 ### Warnings
-This extension uses other Firebase and Google Cloud Platform services, which have associated charges if you exceed the service’s free tier:
+
+This function uses other Firebase and Google Cloud Platform services, which have associated charges if you exceed the service’s free tier:
 
 - Cloud Firestore
 - Firebase Realtime Database
