@@ -1,0 +1,11 @@
+{
+    "name": "translateText",
+    "description": "Translates strings written to a Cloud Firestore collection into multiple languages (uses Cloud Translation API).",
+    "tags": ["Firestore", "Translate"],
+    "trigger": {
+        "provider": "firestore",
+        "event": "document.write",
+        "resource": "/collection/{docId}"
+    },
+    "env": []
+}
