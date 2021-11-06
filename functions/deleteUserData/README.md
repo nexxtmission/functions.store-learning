@@ -6,10 +6,10 @@ You can configure this function to delete user data from any or all of the follo
 
 > **Note:** To use this extension, you need to manage your users with Firebase Authentication.
 
-This function is useful in respecting user privacy and fulfilling compliance requirements. However, its use does not guarantee compliance with government and industry regulations.
+This feature respects user privacy and meets compliance requirements. However, its use does not guarantee compliance with government and industry regulations.
 
 ### Function details
-To install this function, you must specify the path to the Firestore collection, the name of the dataset, the table, and the view. Add the required information to the form with the following parameters:
+To install this function add the required information to the form with the following parameters:
 
 - **FIRESTORE_DELETE_RECURSIVE**: Recursively delete documents subcollections. (Cloud Firestore only)
 - **FIRESTORE_PATHS**: A comma separated list of full paths that contain user data in your Cloud Firestore instance. Leave empty if you don't use Cloud Firestore. (You can represent the User ID of the deleted user with `{UID}`. Ex: users/{UID})

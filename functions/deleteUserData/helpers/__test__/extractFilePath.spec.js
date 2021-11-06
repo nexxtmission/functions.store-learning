@@ -1,7 +1,7 @@
 const extractFilePath = require('../extractFilePath');
 
 describe('extractFilePath()', () => {
-    it('return right file path', async () => {
+    it('should return right file path', async () => {
         [
             '{DEFAULT}/users/{UID}_image.png',
             '  {DEFAULT}/users/{UID}_image.png  ',
