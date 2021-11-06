@@ -6,7 +6,7 @@ You can configure this function to delete user data from any or all of the follo
 
 > **Note:** To use this extension, you need to manage your users with Firebase Authentication.
 
-This feature respects user privacy and meets compliance requirements. However, its use does not guarantee compliance with government and industry regulations.
+This function respects user privacy and meets compliance requirements. However, its use does not guarantee compliance with government and industry regulations.
 
 ### Function details
 To install this function add the required information to the form with the following parameters:
