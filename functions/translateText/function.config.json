@@ -19,7 +19,7 @@
         },
         {
             "name": "INPUT_FIELD_NAME",
-            "type": "string",
+            "type": "text",
             "description": "The name of the field that contains the text to be translated",
             "required": true
         },
