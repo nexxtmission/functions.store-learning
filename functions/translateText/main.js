@@ -26,7 +26,7 @@ const translateText = async (snapshot) => {
         await updateSnapshotTranslations(snapshot);
     } catch (error) {
         Logger.error('ERROR_TRANSLATE_TEXT', {
-            message: error.message,
+            message: error.toString(),
         });
     }
 };

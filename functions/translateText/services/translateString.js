@@ -15,7 +15,7 @@ const translateString = async (string, targetLanguage) => {
         return translatedString;
     } catch (error) {
         Logger.error('ERROR_TRANSLATE_STRING', {
-            message: error.message,
+            message: error.toString(),
             params: { string, targetLanguage },
         });
         throw error;

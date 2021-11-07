@@ -7,24 +7,26 @@ const translateMultiple = async ({
 }) => {
     const translations = {};
     const promises = [];
-    Object.entries(input).forEach(([field, value]) => {
-        languages.forEach((language) => {
-            promises.push(async () => {
-                const output = typeof value === 'string'
-                    ? await translateString(value, language)
-                    : null;
-
-                if (!translations[field]) translations[field] = {};
-                translations[field][language] = output;
+    try {
+        Object.entries(input).forEach(([field, value]) => {
+            languages.forEach((language) => {
+                promises.push(new Promise((resolve) => {
+                    (async () => {
+                        const output = typeof value === 'string'
+                            ? await translateString(value, language)
+                            : null;
+                        if (!translations[field]) translations[field] = {};
+                        translations[field][language] = output;
+                        resolve();
+                    })();
+                }));
             });
         });
-    });
-    try {
         await Promise.all(promises);
         await updateTranslations(snapshot, translations);
     } catch (error) {
         Logger.error('ERROR_TRANSLATE_MULTIPLE', {
-            message: error.message,
+            message: error.toString(),
             params: {
                 fields: input,
                 translations,
