@@ -2,6 +2,7 @@ const translateString = require('../translateString');
 
 const mockedTranslation = jest.fn(() => Promise.resolve(['translated']));
 
+jest.mock('firebase-functions/lib/logger');
 jest.mock('@google-cloud/translate', () => ({
     v2: {
         Translate: jest.fn(() => ({
@@ -10,7 +11,7 @@ jest.mock('@google-cloud/translate', () => ({
         })),
     },
 }));
-jest.mock('../getConfig', () => jest.fn());
+jest.mock('../getConfig', () => jest.fn(() => ({ projectId: 'project' })));
 
 describe('translateString()', () => {
     beforeEach(() => jest.clearAllMocks());
