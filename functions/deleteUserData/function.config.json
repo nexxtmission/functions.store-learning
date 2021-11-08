@@ -23,7 +23,7 @@
         {
             "name": "REALTIME_DATABASE_INSTANCE",
             "type": "text",
-            "description": "The Realtime Database instance where you want to delete user data",
+            "description": "The name of the Realtime Database instance where you want to delete user data",
             "required": false
         },
         {
