@@ -8,6 +8,12 @@
     },
     "env": [
         {
+            "name": "FIRESTORE_PATHS",
+            "type": "text",
+            "description": "A comma separated list of full paths that contain user data in your Cloud Firestore instance. Leave empty if you don't use Cloud Firestore. (You can represent the User ID of the deleted user with `{UID}`. Ex: users/{UID})",
+            "required": false
+        },
+        {
             "name": "FIRESTORE_DELETE_RECURSIVE",
             "type": "boolean",
             "description": "Recursively delete documents subcollections. (Cloud Firestore only)",
@@ -18,12 +24,6 @@
             "name": "REALTIME_DATABASE_INSTANCE",
             "type": "text",
             "description": "The Realtime Database instance where you want to delete user data",
-            "required": false
-        },
-        {
-            "name": "FIRESTORE_PATHS",
-            "type": "text",
-            "description": "A comma separated list of full paths that contain user data in your Cloud Firestore instance. Leave empty if you don't use Cloud Firestore. (You can represent the User ID of the deleted user with `{UID}`. Ex: users/{UID})",
             "required": false
         },
         {
