@@ -13,7 +13,7 @@ const deleteDataFromFirestore = async ({ paths: firestorePaths, uid, recursive }
                     return Promise.resolve();
                 });
             } else {
-                firestore.recursiveDelete(firestore.doc(path));
+                await firestore.recursiveDelete(firestore.doc(path));
             }
         } catch (error) {
             Logger.error('ERROR_DELETE_DATA_FROM_FIRESTORE', {
