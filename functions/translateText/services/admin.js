@@ -1,7 +1,5 @@
 const admin = require('firebase-admin');
 
-const instance = admin.initializeApp({
-    credential: admin.credential.applicationDefault(),
-});
+const instance = admin.initializeApp();
 
 module.exports = instance;
