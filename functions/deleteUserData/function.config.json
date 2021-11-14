@@ -1,0 +1,48 @@
+{
+    "name": "deleteUserData",
+    "description": "Remove data from Cloud Firestore, Realtime Database, and/or Cloud Storage when a user account is deleted.",
+    "tags": [],
+    "trigger": {
+        "provider": "auth",
+        "event": "user.delete"
+    },
+    "env": [
+        {
+            "name": "FIRESTORE_PATHS",
+            "type": "text",
+            "description": "A comma separated list of full paths that contain user data in your Cloud Firestore instance. Leave empty if you don't use Cloud Firestore. (You can represent the User ID of the deleted user with `{UID}`. Ex: users/{UID})",
+            "required": false
+        },
+        {
+            "name": "FIRESTORE_DELETE_RECURSIVE",
+            "type": "boolean",
+            "description": "Recursively delete documents subcollections. (Cloud Firestore only)",
+            "required": false,
+            "default": true
+        },
+        {
+            "name": "REALTIME_DATABASE_INSTANCE",
+            "type": "text",
+            "description": "The name of the Realtime Database instance where you want to delete user data",
+            "required": false
+        },
+        {
+            "name": "REALTIME_DATABASE_PATHS",
+            "type": "text",
+            "description": "A comma separated list of full paths that contain user data in your Realtime Database instance. Leave empty if you don't use Realtime Database. (You can represent the User ID of the deleted user with `{UID}`. Ex: users/{UID})",
+            "required": false
+        },
+        {
+            "name": "STORAGE_DEFAULT_BUCKET",
+            "type": "text",
+            "description": "The name of the default bucket to be used.",
+            "required": false
+        },
+        {
+            "name": "STORAGE_PATHS",
+            "type": "text",
+            "description": "A comma separated list of full paths to files or directories in your buckets in Google Cloud Storage. Leave empty if you don't use Cloud Storage. (You can use `{UID}` to represent the User ID and `{DEFAULT}` to represent your default Storage bucket. Ex: `{DEFAULT}/{UID}-pic.png,my-app-logs/{UID}-logs.txt`)",
+            "required": false
+        }
+    ]
+}
