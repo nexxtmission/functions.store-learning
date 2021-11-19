@@ -5,7 +5,7 @@ const createStripeCustomer = ({ email, eventId }) => stripe.customers.create(
         email,
         metadata: { createdBy: 'sendInvoiceStripe' },
     },
-    { idempotencyKey: `customers-create-${eventId}` },
+    { idempotencyKey: `create-customer-${eventId}` },
 );
 
 module.exports = createStripeCustomer;

@@ -2,7 +2,7 @@ const stripe = require('./stripe');
 
 const sendInvoice = ({ id, eventId }) => stripe.invoices.sendInvoice(
     id,
-    { idempotencyKey: `invoices-sendInvoice-${eventId}` },
+    { idempotencyKey: `send-invoice-${eventId}` },
 );
 
 module.exports = sendInvoice;

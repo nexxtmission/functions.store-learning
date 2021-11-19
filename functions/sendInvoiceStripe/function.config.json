@@ -5,7 +5,7 @@
     "trigger": {
         "provider": "firestore",
         "event": "document.create",
-        "resource": "/collection/{docId}"
+        "resource": "/invoices/{invoiceId}"
     },
     "env": [{
         "name": "STRIPE_API_KEY",
@@ -17,9 +17,5 @@
         "description": "The default number of days the customer has before their payment is due.",
         "required": true,
         "default": 7
-    }, {
-        "name": "WEBHOOK_SECRET",
-        "description": "The secret to authenticate webhook stripe requests.",
-        "required": true
     }]
 }

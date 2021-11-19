@@ -21,9 +21,10 @@ const createInvoice = async ({
                     description: item.description,
                     tax_rates: item.tax_rates || [],
                 },
-                { idempotencyKey: `invoiceItems-create-${idempotencyKey}-${index}` },
+                { idempotencyKey: `create-invoice-item-${idempotencyKey}-${index}` },
             ),
         );
+
         await Promise.all(promises);
 
         const invoiceParams = {
@@ -41,7 +42,7 @@ const createInvoice = async ({
 
         const invoice = await stripe.invoices.create(
             invoiceParams,
-            { idempotencyKey: `invoices-create-${idempotencyKey}` },
+            { idempotencyKey: `create-invoice-${idempotencyKey}` },
         );
 
         return invoice;
