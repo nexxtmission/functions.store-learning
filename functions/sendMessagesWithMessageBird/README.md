@@ -21,7 +21,7 @@ const dataBuffer = Buffer.from(
     JSON.stringify({
         type: 'text',
         to: '16175551212',
-        from: `123qwe456asd789zxc`,
+        from: '123qwe456asd789zxc',
         content: {
             text: 'Hello World',
         },
