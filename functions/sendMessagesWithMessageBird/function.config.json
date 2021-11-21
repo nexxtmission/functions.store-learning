@@ -1,0 +1,26 @@
+{
+    "name": "sendMessagesWithMessageBird",
+    "description": "Send omnichannel messages with MessageBird.",
+    "tags": [
+        "transactional",
+        "sms",
+        "message"
+    ],
+    "trigger": {
+        "provider": "pubsub",
+        "event": "event.publish",
+        "topic": "SEND_MESSAGEBIRD_MESSAGE"
+    },
+    "env": [
+        {
+            "name": "MESSAGEBIRD_LIVE_API_KEY",
+            "description": "The API key that MessageBird uses to identify the user.",
+            "required": true
+        },
+        {
+            "name": "CHANNEL_ID",
+            "description": "The channel ID from which the message should be sent.",
+            "required": true
+        }
+    ]
+}
