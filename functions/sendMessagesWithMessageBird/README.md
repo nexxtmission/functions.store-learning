@@ -32,7 +32,7 @@ await pubsub.topic('SEND_MESSAGEBIRD_MESSAGE').publish(dataBuffer);
 
 After you implement the previous code, MessageBird will send a message with the content "Hello World".
 
-> Note that if you need to access the body of the request and the response that the MessageBird Conversations API returns, you can do so from the function registers called messagebird_request and messagebird_response.
+> Note that if you need to access the body of the request and the response that the MessageBird Conversations API returns, you can do so from the function logs called messagebird_request and messagebird_response.
 
 ### Resources
 

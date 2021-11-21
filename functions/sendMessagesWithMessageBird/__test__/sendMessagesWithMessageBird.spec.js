@@ -1,6 +1,6 @@
 process.env.CHANNEL_ID = '987poi654lkj321mnb';
 const firebaseFunctions = require('firebase-functions');
-const sendMessagesWithMessageBird = require('../sendMessagesWithMessageBird');
+const sendMessagesWithMessageBird = require('../main');
 const sendMessage = require('../services/messageBirdClient');
 
 jest.mock('../services/messageBirdClient', () => jest.fn());
@@ -22,7 +22,8 @@ describe('sendMessagesWithMessageBird', () => {
         };
         const result = await sendMessagesWithMessageBird(message);
         expect(firebaseFunctions.logger.error).toHaveBeenCalledWith(
-            'messagebird_error', expect.any(Error),
+            'messagebird_error',
+            expect.any(Error)
         );
         expect(result).toBeNull();
     });
@@ -51,7 +52,7 @@ describe('sendMessagesWithMessageBird', () => {
                 from: '987poi654lkj321mnb',
                 to: '123456789',
                 type: 'text',
-            },
+            }
         );
         expect(sendMessage).toHaveBeenCalledWith({
             content: { text: 'Hello world' },
@@ -66,7 +67,7 @@ describe('sendMessagesWithMessageBird', () => {
                 fallback: null,
                 id: 'qwertyuiopasdfghjklzxcvbnm',
                 status: 'accepted',
-            },
+            }
         );
         expect(result).toEqual({
             fallback: null,
@@ -101,7 +102,7 @@ describe('sendMessagesWithMessageBird', () => {
                 from: '123qwe456asd789zxc',
                 to: '123456789',
                 type: 'text',
-            },
+            }
         );
         expect(sendMessage).toHaveBeenCalledWith({
             content: { text: 'Hello world' },
@@ -116,7 +117,7 @@ describe('sendMessagesWithMessageBird', () => {
                 fallback: null,
                 id: 'qwertyuiopasdfghjklzxcvbnm',
                 status: 'accepted',
-            },
+            }
         );
         expect(result).toEqual({
             fallback: null,
