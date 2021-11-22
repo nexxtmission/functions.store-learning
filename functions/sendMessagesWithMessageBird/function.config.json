@@ -1,6 +1,6 @@
 {
     "name": "sendMessagesWithMessageBird",
-    "description": "Send omnichannel messages with MessageBird.",
+    "description": "Send messages with the MessageBird API by emitting a Pub/Sub.",
     "tags": [
         "transactional",
         "sms",
