@@ -12,7 +12,7 @@
         "description": "The api key to access to stripe services.",
         "required": true
     }, {
-        "name": "DAYS_UNTIL_DUE",
+        "name": "DAYS_UNTIL_DUE_DEFAULT",
         "type": "number",
         "description": "The default number of days the customer has before their payment is due.",
         "required": true,
