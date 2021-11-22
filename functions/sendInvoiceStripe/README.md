@@ -14,7 +14,7 @@ As this function uses other Firebase and Google Cloud Platform services, you wil
 
 To install this function add the required information to the form with the following parameters:
 
-- **Document Path**: The document path that you'd like this function to listen to. A placeholder should be used for the document ID (e.g., `/collection/{docId}`).
+- **Document Path**: The document path that you'd like this function to listen to. A placeholder should be used for the document ID (e.g., `/invoices/{invoiceId}`).
 - **STRIPE_API_KEY**: The api key to access to stripe services.
 - **DAYS_UNTIL_DUE_DEFAULT**: The default number of days the customer has before their payment is due.
 
