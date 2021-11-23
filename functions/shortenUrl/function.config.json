@@ -1,0 +1,37 @@
+{
+    "name": "shortenUrl",
+    "description": "",
+    "tags": [],
+    "trigger": {
+        "provider": "firestore",
+        "event": "document.write",
+        "resource": "/collection/{docId}"
+    },
+    "env": [
+        {
+            "name": "BITLY_ACCESS_TOKEN",
+            "type": "text",
+            "description": "The token to access Bitly API",
+            "required": true
+        },
+        {
+            "name": "LONG_URL_FIELD_NAME",
+            "type": "text",
+            "description": "The name of the field containing the url to be shortened",
+            "required": true
+        },
+        {
+            "name": "SHORT_URL_FIELD_NAME",
+            "type": "text",
+            "description": "The name of the field to store the shortened url",
+            "required": true
+        },
+        {
+            "name": "SHORT_URL_DEFAULT_DOMAIN",
+            "type": "text",
+            "description": "The default domain to be use to shorten urls",
+            "required": false,
+            "default": "bit.ly"
+        }
+    ]
+}
