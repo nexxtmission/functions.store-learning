@@ -4,7 +4,7 @@ Use this function to create and send invoices to customers using the Stripe paym
 
 The invoices are automatically customized according to your Stripe settings. After the invoice is sent, you can use the Stripe dashboard to track and get more detailed reports.
 
-As this function uses other Firebase and Google Cloud Platform services, you will be charged if you exceed the serviceâs free tier:
+As this function uses other Firebase and Google Cloud Platform services, you will be charged if you exceed the service's free tier:
 
 - Cloud Translation API
 - Cloud Firestore
