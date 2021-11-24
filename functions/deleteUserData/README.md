@@ -35,7 +35,7 @@ To install this function add the required information to the form with the follo
   - **firestoreDeleteRecursive**: Recursively delete documents subcollections. (Cloud Firestore only)
   - **realtimeDatabaseName**: The Realtime Database instance where you want to delete user data
   - **realtimeDatabasePaths**: A comma separated list of full paths that contain user data in your Realtime Database instance. Leave empty if you don't use Realtime Database. (You can represent the User ID of the deleted user with `{UID}`. Ex: users/{UID})
-  - **storageDefaultBucketName**: The name of the default bucket to be used.
+  - **storageDefaultBucketName**: The name of the bucket to be used as default. If omited your project default bucket will be used.
   - **storagePaths**: A comma separated list of full paths to files or directories in your buckets in Google Cloud Storage. Leave empty if you don't use Cloud Storage. (You can use `{UID}` to represent the User ID and `{DEFAULT}` to represent your default Storage bucket. Ex: `{DEFAULT}/{UID}-pic.png`,`my-app-logs/{UID}-logs.txt`)
 
     > **Note:** You can also use other wildcards to represent user's UserId: `{user}`, `{userId}`, `{uid}` or `{id}`. Lower an upper letters are treated as equal.

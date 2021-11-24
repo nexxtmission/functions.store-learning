@@ -1,19 +1,19 @@
 const Logger = require('firebase-functions/lib/logger');
-const isEmpty = require('@rainbow-modules/validation/lib/isEmpty');
 const admin = require('./admin');
 const extractUserPaths = require('../helpers/extractUserPaths');
 const getBucketName = require('../helpers/getBucketName');
 const extractFilePath = require('../helpers/extractFilePath');
 const isFolder = require('../helpers/isFolder');
+const isEmptyString = require('../helpers/isEmptyString');
 
 const deleteDataFromStorage = async ({ paths: storagePaths, uid, defaultBucketName }) => {
     const paths = extractUserPaths(storagePaths, uid);
     const promises = paths.map(async (path) => {
+        const bucketName = getBucketName({ path, defaultBucketName });
+        const prefix = extractFilePath({ path });
         try {
-            const bucketName = getBucketName({ path, defaultBucketName });
-            const prefix = extractFilePath({ path });
             const bucket = (
-                isEmpty(bucketName)
+                isEmptyString(bucketName)
                     ? admin.storage().bucket()
                     : admin.storage().bucket(bucketName)
             );
@@ -24,7 +24,12 @@ const deleteDataFromStorage = async ({ paths: storagePaths, uid, defaultBucketNa
             if (error.code !== 404) {
                 Logger.error('ERROR_DELETE_DATA_STORAGE', {
                     errorMessage: error.toString(),
-                    params: { paths },
+                    params: { bucketName, path: prefix },
+                });
+            } else {
+                Logger.log('DELETE_DATA_STORAGE', {
+                    errorMessage: `The object "${prefix}": was not found in storage`,
+                    params: { bucketName, path: prefix },
                 });
             }
         }

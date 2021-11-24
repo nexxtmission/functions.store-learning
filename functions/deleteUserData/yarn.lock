@@ -223,11 +223,6 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha1-p3c2C1s5oaLlEG+OhY8v0tBgxXA=
 
-"@rainbow-modules/validation@^0.46.0":
-  version "0.46.0"
-  resolved "https://registry.yarnpkg.com/@rainbow-modules/validation/-/validation-0.46.0.tgz#58f93cbc315d6b2584a5b330fde873bde1f21a1b"
-  integrity sha512-3AOwJ84GqTFV1G1OuqXW4eUbaR6Em2m2W8D91EozXoOKvcPU6ZaD6lYYIA980yqwNMXaKT7wVJy6WyireQ2NrA==
-
 "@tootallnate/once@2":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-2.0.0.tgz#f544a148d3ab35801c1f633a7441fd87c2e484bf"
