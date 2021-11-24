@@ -82,7 +82,7 @@ describe('deleteUserData()', () => {
         expect.assertions(3);
         getConfig.mockReturnValue({
             ...emptyConfig,
-            storageDefaultBucket: 'bucket_name',
+            storageDefaultBucketName: 'bucket_name',
             storagePaths: '{DEFAULT}/users/profile_{uid}.png,user_files/{uid}',
         });
         await deleteUserData(user);
