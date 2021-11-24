@@ -9,7 +9,7 @@ const deleteDataFromRealtimeDatabase = async ({ paths: databasePaths, uid }) => 
             await admin.database().ref(path).remove();
         } catch (error) {
             Logger.error('ERROR_DELETE_DATA_FROM_REALTIME_DATABASE', {
-                message: error.message,
+                errorMessage: error.toString(),
                 params: { paths },
             });
         }

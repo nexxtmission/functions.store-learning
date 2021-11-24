@@ -18,7 +18,7 @@ const deleteDataFromStorage = async ({ paths: storagePaths, uid, defaultBucketNa
         } catch (error) {
             if (error.code !== 404) {
                 Logger.error('ERROR_DELETE_DATA_STORAGE', {
-                    message: error.message,
+                    errorMessage: error.toString(),
                     params: { paths },
                 });
             }

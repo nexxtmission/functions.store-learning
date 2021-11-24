@@ -25,10 +25,7 @@
                 "properties": {
                     "firestorePaths": {
                         "type": "array",
-                        "items": {
-                            "type": "string",
-                            "isValidFirestoreDocumentPath": true
-                        }
+                        "items": { "type": "string" }
                     },
                     "firestoreDeleteRecursive": {
                         "type": "boolean",
@@ -37,21 +34,12 @@
                     "realtimeDatabaseName": { "type": "string" },
                     "realtimeDatabasePaths": {
                         "type": "array",
-                        "items": {
-                            "type": "string",
-                            "isValidDocumentPath": true
-                        }
+                        "items": { "type": "string" }
                     },
-                    "storageDefaultBucketName": {
-                        "type": "string",
-                        "isValidBucketName": true
-                    },
+                    "storageDefaultBucketName": { "type": "string" },
                     "storagePaths": {
                         "type": "array",
-                        "items": {
-                            "type": "string",
-                            "isValidFileSystemPath": true
-                        }
+                        "items": { "type": "string" }
                     }
                 }
             }
