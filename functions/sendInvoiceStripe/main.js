@@ -98,6 +98,7 @@ const sendInvoiceStripe = async (snapshot, context) => {
     } catch (error) {
         Logger.error('ERROR_SEND_INVOICE', {
             errorMessage: 'Error occur while making a request to the Stripe API',
+            error,
         });
     }
 };
