@@ -15,7 +15,7 @@
         "name": "DAYS_UNTIL_DUE_DEFAULT",
         "type": "number",
         "description": "The default number of days the customer has before their payment is due.",
-        "required": true,
+        "required": false,
         "default": 7
     }]
 }
