@@ -1,4 +1,5 @@
 const Logger = require('firebase-functions/lib/logger');
+const isEmpty = require('@rainbow-modules/validation/lib/isEmpty');
 const admin = require('./admin');
 const extractUserPaths = require('../helpers/extractUserPaths');
 const getBucketName = require('../helpers/getBucketName');
@@ -12,9 +13,9 @@ const deleteDataFromStorage = async ({ paths: storagePaths, uid, defaultBucketNa
             const bucketName = getBucketName({ path, defaultBucketName });
             const prefix = extractFilePath({ path });
             const bucket = (
-                bucketName
-                    ? admin.storage().bucket(bucketName)
-                    : admin.storage().bucket()
+                isEmpty(bucketName)
+                    ? admin.storage().bucket()
+                    : admin.storage().bucket(bucketName)
             );
             await (isFolder(prefix)
                 ? bucket.deleteFiles({ prefix })
