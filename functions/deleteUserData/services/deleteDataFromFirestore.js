@@ -17,7 +17,7 @@ const deleteDataFromFirestore = async ({ paths: firestorePaths, uid, recursive }
             }
         } catch (error) {
             Logger.error('ERROR_DELETE_DATA_FROM_FIRESTORE', {
-                message: error.message,
+                errorMessage: error.toString(),
                 params: { paths },
             });
         }
