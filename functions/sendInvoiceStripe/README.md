@@ -6,7 +6,6 @@ The invoices are automatically customized according to your Stripe settings. Aft
 
 As this function uses other Firebase and Google Cloud Platform services, you will be charged if you exceed the service's free tier:
 
-- Cloud Translation API
 - Cloud Firestore
 - Cloud Functions
 
