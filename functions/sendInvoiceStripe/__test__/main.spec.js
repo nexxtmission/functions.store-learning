@@ -276,8 +276,4 @@ describe('sendInvoiceStripe()', () => {
             { errorMessage: 'Error occur while making a request to the Stripe API' },
         );
     });
-    // it('should ', async () => {});
-    // it('should ', async () => {});
-    // it('should ', async () => {});
-    // it('should ', async () => {});
 });
