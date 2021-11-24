@@ -2,5 +2,3 @@ node_modules
 lib
 coverage
 .DS_Store
-emulator
-functions/createInvoice
