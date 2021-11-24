@@ -266,14 +266,18 @@ describe('sendInvoiceStripe()', () => {
             email: 'user@email.com',
             items: [{ currency: 'usd' }],
         });
-        sendInvoice.mockReturnValue(Promise.reject(new Error('something happened')));
+        const error = new Error('something happened');
+        sendInvoice.mockReturnValue(Promise.reject(error));
         await sendInvoiceStripe(
             snapshot,
             { eventId: 'event-1' },
         );
         expect(Logger.error).toHaveBeenCalledWith(
             'ERROR_SEND_INVOICE',
-            { errorMessage: 'Error occur while making a request to the Stripe API' },
+            {
+                errorMessage: 'Error occur while making a request to the Stripe API',
+                error,
+            },
         );
     });
 });
