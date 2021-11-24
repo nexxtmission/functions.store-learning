@@ -1,7 +1,7 @@
 const extractUserPaths = require('../extractUserPaths');
 
 describe('extractUserPaths()', () => {
-    it('should return right paths list', async () => {
+    it('should return right paths list', () => {
         [
             ['/users/{UID}', '/admins/{UID}   '],
             ['/users/{UID}', '/admins/{UID}'],

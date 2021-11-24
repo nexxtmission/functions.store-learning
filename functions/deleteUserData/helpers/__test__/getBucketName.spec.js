@@ -1,7 +1,7 @@
 const getBucketName = require('../getBucketName');
 
 describe('getBucketName()', () => {
-    it('should return right bucket name', async () => {
+    it('should return right bucket name', () => {
         const paths = [
             '{DEFAULT}/users/{UID}_image.png',
             '  {DEFAULT}/users/{UID}_image.png  ',
