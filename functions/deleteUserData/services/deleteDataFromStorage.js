@@ -26,11 +26,6 @@ const deleteDataFromStorage = async ({ paths: storagePaths, uid, defaultBucketNa
                     errorMessage: error.toString(),
                     params: { bucketName, path: prefix },
                 });
-            } else {
-                Logger.log('DELETE_DATA_STORAGE', {
-                    errorMessage: `The object "${prefix}": was not found in storage`,
-                    params: { bucketName, path: prefix },
-                });
             }
         }
     });
