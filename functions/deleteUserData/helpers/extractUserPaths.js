@@ -2,6 +2,6 @@ const replaceUID = (path, uid) => path.replace(/{id}|{uid}|{userid}|{user_id}|{u
 
 const extractUserPaths = (
     paths, uid,
-) => paths.split(',').map((path) => replaceUID(path.trim(), uid));
+) => paths.map((path) => replaceUID(path.trim(), uid));
 
 module.exports = extractUserPaths;
