@@ -1,0 +1,21 @@
+{
+    "name": "sendInvoiceStripe",
+    "description": "Create and send invoices to your customers using Stripe Payment platform.",
+    "tags": ["stripe", "invoice", "billing"],
+    "trigger": {
+        "provider": "firestore",
+        "event": "document.create",
+        "resource": "/invoices/{invoiceId}"
+    },
+    "env": [{
+        "name": "STRIPE_API_KEY",
+        "description": "The api key to access to stripe services.",
+        "required": true
+    }, {
+        "name": "DAYS_UNTIL_DUE_DEFAULT",
+        "type": "number",
+        "description": "The default number of days the customer has before their payment is due.",
+        "required": false,
+        "default": 7
+    }]
+}
