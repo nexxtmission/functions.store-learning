@@ -10,7 +10,7 @@ const deleteUserData = async (userRecord) => {
         firestoreDeleteRecursive,
         realtimeDatabasePaths,
         storagePaths,
-        storageDefaultBucket,
+        storageDefaultBucketName,
     } = getConfig();
     const promises = [];
 
@@ -33,7 +33,7 @@ const deleteUserData = async (userRecord) => {
         promises.push(deleteDataFromStorage({
             uid,
             paths: storagePaths,
-            defaultBucketName: storageDefaultBucket,
+            defaultBucketName: storageDefaultBucketName,
         }));
     }
 
