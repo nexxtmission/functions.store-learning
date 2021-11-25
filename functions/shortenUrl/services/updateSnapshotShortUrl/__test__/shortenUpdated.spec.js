@@ -12,17 +12,17 @@ const snapshot = {
     after: 'after',
 };
 
-jest.mock('../../getConfig', () => jest.fn(() => config));
-jest.mock('../../../helpers/extractFieldFromSnapshot', () => jest.fn());
-jest.mock('../../bitly/shorten', () => jest.fn());
-jest.mock('../updateShortUrl', () => jest.fn());
-jest.mock('../../admin', () => ({
+jest.mock('firebase-admin', () => ({
     firestore: {
         FieldValue: {
             delete: jest.fn(() => null),
         },
     },
 }));
+jest.mock('../../getConfig', () => jest.fn(() => config));
+jest.mock('../../../helpers/extractFieldFromSnapshot', () => jest.fn());
+jest.mock('../../bitly/shorten', () => jest.fn());
+jest.mock('../updateShortUrl', () => jest.fn());
 
 describe('shortenUpdated()', () => {
     beforeEach(() => jest.clearAllMocks());
@@ -33,14 +33,16 @@ describe('shortenUpdated()', () => {
         expect(shortenUrl).not.toHaveBeenCalled();
         expect(updateShortUrl).not.toHaveBeenCalled();
     });
-    it('should remove shortUrl field if it have a non string value', async () => {
+    it('should remove shortUrl field if value for longUrl is removed', async () => {
         expect.assertions(2);
-        extractFieldFromSnapshot.mockReturnValue(3);
+        extractFieldFromSnapshot.mockImplementation(({ snapshot: snapshotArg }) => {
+            const fields = { before: 'field1', after: null };
+            return fields[snapshotArg];
+        });
         await shortenUpdated(snapshot.before, snapshot.after);
         expect(updateShortUrl).toHaveBeenCalledWith('after', null);
         expect(shortenUrl).not.toHaveBeenCalled();
     });
-
     it('should not update snapshot with shortened url if value for longUrl (before and after) are the same', async () => {
         expect.assertions(2);
         extractFieldFromSnapshot.mockReturnValue('value');
