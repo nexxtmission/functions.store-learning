@@ -1,6 +1,6 @@
 {
     "name": "shortenUrl",
-    "description": "",
+    "description": "Shorten URLs written to a specified Cloud Firestore collection with Bitly.",
     "tags": [],
     "trigger": {
         "provider": "firestore",
@@ -11,25 +11,25 @@
         {
             "name": "BITLY_ACCESS_TOKEN",
             "type": "text",
-            "description": "The token to access Bitly API",
+            "description": "The token to access the Bitly API",
             "required": true
         },
         {
             "name": "LONG_URL_FIELD_NAME",
             "type": "text",
-            "description": "The name of the field containing the url to be shortened",
+            "description": "The name of the field that contains the URL to be shortened",
             "required": true
         },
         {
             "name": "SHORT_URL_FIELD_NAME",
             "type": "text",
-            "description": "The name of the field to store the shortened url",
+            "description": "The name of the field to store the shortened URL",
             "required": true
         },
         {
             "name": "SHORT_URL_DEFAULT_DOMAIN",
             "type": "text",
-            "description": "The default domain to be use to shorten urls",
+            "description": "The default domain that will be used to shorten the URL",
             "required": false,
             "default": "bit.ly"
         }
