@@ -38,7 +38,14 @@ To install this function add the required information to the form with the follo
   - **storageDefaultBucketName**: The name of the bucket to be used as default. Must be set if you want to use the wildcard `{DEFAULT}`.
   - **storagePaths**: A comma separated list of full paths to files or directories in your buckets in Google Cloud Storage. Leave empty if you don't use Cloud Storage. (You can use `{UID}` to represent the User ID and `{DEFAULT}` to represent your default Storage bucket. Ex: `{DEFAULT}/{UID}-pic.png`,`my-app-logs/{UID}-logs.txt`)
 
-    > **Note:** You can also use other wildcards to represent user's UserId: `{user}`, `{userId}`, `{uid}` or `{id}`. Lower an upper letters are treated as equal.
+> **Note:** You can also use other wildcards to represent user's UserId: `{user}`, `{userId}`, `{uid}` or `{id}`. Lower an upper letters are treated as equal.
+
+As stated before, you can use `{DEFAULT}` in your storage paths to specify the file is located in the default bucket. *Default* doesn't mean *"the default"* bucket for your project, it means that the bucket name will be used when `{DEFAULT}` appears in some path.
+
+It is not mandatory to set all config fields and you'll see no errors when installing the function but, you must set some of them conditionally:
+
+- If you set `realtimeDatabasePaths` to delete data from Realtime Database then must set `realtimeDatabaseName` as well.
+- You don't need to set `storageDefaultBucketName` unless you use `{DEFAULT}` in your storage paths. See *Example 3* from *Function config examples* section to learn how to set config for Firebase Storage.
 
 ### Warnings
 
@@ -47,3 +54,47 @@ This function uses other Firebase and Google Cloud Platform services, which have
 - Cloud Firestore
 - Firebase Realtime Database
 - Cloud Storage
+
+### Function config examples
+
+#### Example 1: Config to delete data in Cloud Firestore
+
+```text
+CONFIG={
+    "firestorePaths": [
+      "profile-images/{UID}-jpg",
+      "users/{userId}"
+    ],
+    "firestoreDeleteRecursive": false
+}
+```
+
+#### Example 2: Config to delete data in Realtime Database
+
+```text
+CONFIG={
+    "realtimeDatabaseName": "my-database",
+    "realtimeDatabasePaths": ["profile-images/{UID}-jpg", "users/{userId}"]
+}
+```
+
+#### Example 3: Config to delete data in Firebase Storage
+
+In this example, we have a project named `dummy-project`, that contains two buckets: the app default bucket, to store users files, and a second one, named `log-files` to store user logs. In order to delete user files from boths buckets we can set the config like:
+
+Using `{DEAFULT}` placeholder and setting `storageDefaultBucketName`
+
+```text
+CONFIG={
+    "storageDefaultBucketName": "dummy-project.appspot.com",
+    "storagePaths": ["{DEFAULT}/profile-images/{UID}-jpg", "log-files/{userId}"]
+}
+```
+
+Or we can omit the `storageDefaultBucketName` and avoid using `{DEFAULT}`
+
+```text
+CONFIG={
+    "storagePaths": ["dummy-project.appspot.com/profile-images/{UID}-jpg", "log-files/{userId}"]
+}
+```
