@@ -8,7 +8,7 @@
     },
     "env": [
         {
-            "name": "CONFIG",
+            "name": "CONFIGURATION",
             "description": "The function config",
             "type": "json",
             "required": true,
