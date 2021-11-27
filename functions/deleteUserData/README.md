@@ -30,7 +30,7 @@ To install this function, add the required information to the form with the foll
     }
     ```
 
-  - **firestorePaths**: A comma separated list of full paths that contain user data in your Cloud Firestore instance. Leave empty if you don't use Cloud Firestore. (You can represent the User ID of the deleted user with `{UID}` (e.g., `users/{UID}`). See examples below.
+  - **firestorePaths**: A comma separated list of full paths that contain user data in your Cloud Firestore instance. Leave empty if you don't use Cloud Firestore. (You can represent the User ID of the deleted user with `{UID}`, e.g., `users/{UID}`). See examples below.
 
   > **Note** The use of `{UID}` in Cloud Firestore paths is mandatory.
 
