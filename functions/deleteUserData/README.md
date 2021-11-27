@@ -31,14 +31,21 @@ To install this function add the required information to the form with the follo
     }
     ```
 
-  - **firestorePaths**: A comma separated list of full paths that contain user data in your Cloud Firestore instance. Leave empty if you don't use Cloud Firestore. (You can represent the User ID of the deleted user with `{UID}`. Ex: users/{UID})
+  - **firestorePaths**: A comma separated list of full paths that contain user data in your Cloud Firestore instance. Leave empty if you don't use Cloud Firestore. (You can represent the User ID of the deleted user with the wildcard `{UID}` (e.g. `users/{UID}`). See examples below.
+
+    > **Note** Use of wildcard in Cloud Firestore paths is mandatory.
+
   - **firestoreDeleteRecursive**: Recursively delete documents subcollections. (Cloud Firestore only)
-  - **realtimeDatabaseName**: The Realtime Database instance where you want to delete user data
-  - **realtimeDatabasePaths**: A comma separated list of full paths that contain user data in your Realtime Database instance. Leave empty if you don't use Realtime Database. (You can represent the User ID of the deleted user with `{UID}`. Ex: users/{UID})
+  - **realtimeDatabaseName**: The Realtime Database instance where you want to delete user data. To find the database name, Go to Firebase console, select your project and navigate to the Realtime Database section. Depending on the region you choosed for your  project, the database name will be of the form `<databaseName>.firebaseio.com` or `<databaseName>.<region>.firebasedatabase.app`
+
+  - **realtimeDatabasePaths**: A comma separated list of full paths that contain user data in your Realtime Database instance. Leave empty if you don't use Realtime Database. (You can represent the User ID of the deleted user with `{UID}` (e.g. `users/{UID}`). See examples below.
+
+    > **Note** Use of wildcard in Realtime Database paths is mandatory.
+
   - **storageDefaultBucketName**: The name of the bucket to be used as default. Must be set if you want to use the wildcard `{DEFAULT}`.
   - **storagePaths**: A comma separated list of full paths to files or directories in your buckets in Google Cloud Storage. Leave empty if you don't use Cloud Storage. (You can use `{UID}` to represent the User ID and `{DEFAULT}` to represent your default Storage bucket. Ex: `{DEFAULT}/{UID}-pic.png`,`my-app-logs/{UID}-logs.txt`)
 
-> **Note:** You can also use other wildcards to represent user's UserId: `{user}`, `{userId}`, `{uid}` or `{id}`. Lower an upper letters are treated as equal.
+> **Note** You can also use other wildcards to represent user's UserId: `{user}`, `{userId}`, `{uid}` or `{id}`. Lower an upper letters are treated as equal. Any other wildcard used as placeholder for user's UserId will be ignored.
 
 As stated before, you can use `{DEFAULT}` in your storage paths to specify the file is located in the default bucket. *Default* doesn't mean *"the default"* bucket for your project, it means that the bucket name will be used when `{DEFAULT}` appears in some path.
 
@@ -73,7 +80,7 @@ CONFIG={
 
 ```text
 CONFIG={
-    "realtimeDatabaseName": "my-database",
+    "realtimeDatabaseName": "my-database.firebaseio.com",
     "realtimeDatabasePaths": ["profile-images/{UID}-jpg", "users/{userId}"]
 }
 ```
