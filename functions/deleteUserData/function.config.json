@@ -19,9 +19,8 @@
             "default": {    
                 "firestorePaths": [],
                 "firestoreDeleteRecursive": false,
-                "realtimeDatabaseName": "",
+                "realtimeDatabaseUrl": "",
                 "realtimeDatabasePaths": [],
-                "storageDefaultBucketName": "",
                 "storagePaths": []
             },
             "schema": {
@@ -35,12 +34,14 @@
                         "type": "boolean",
                         "default": false
                     },
-                    "realtimeDatabaseName": { "type": "string" },
+                    "realtimeDatabaseUrl": {
+                        "type": "string",
+                        "format": "url"
+                    },
                     "realtimeDatabasePaths": {
                         "type": "array",
                         "items": { "type": "string" }
                     },
-                    "storageDefaultBucketName": { "type": "string" },
                     "storagePaths": {
                         "type": "array",
                         "items": { "type": "string" }

@@ -6,10 +6,10 @@ const extractFilePath = require('../helpers/extractFilePath');
 const isFolder = require('../helpers/isFolder');
 const isEmptyString = require('../helpers/isEmptyString');
 
-const deleteDataFromStorage = async ({ paths: storagePaths, uid, defaultBucketName }) => {
+const deleteDataFromStorage = async ({ paths: storagePaths, uid }) => {
     const paths = extractUserPaths(storagePaths, uid);
     const promises = paths.map(async (path) => {
-        const bucketName = getBucketName({ path, defaultBucketName });
+        const bucketName = getBucketName({ path });
         const prefix = extractFilePath({ path });
         try {
             const bucket = (
@@ -24,7 +24,7 @@ const deleteDataFromStorage = async ({ paths: storagePaths, uid, defaultBucketNa
             if (error.code !== 404) {
                 Logger.error('ERROR_DELETE_DATA_STORAGE', {
                     errorMessage: error.toString(),
-                    params: { bucketName, path: prefix },
+                    params: { bucketName: bucketName || '{DEFAULT}', path: prefix },
                 });
             }
         }

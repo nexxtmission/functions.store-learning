@@ -1,23 +1,29 @@
 const getBucketName = require('../getBucketName');
 
 describe('getBucketName()', () => {
-    it('should return right bucket name', () => {
+    it('should return undefined', () => {
         const paths = [
             '{DEFAULT}/users/{UID}_image.png',
+            '{default}/users/{UID}_image.png',
             '  {DEFAULT}/users/{UID}_image.png  ',
+            '/users/{UID}_image.png  ',
+            '    /users/{UID}_image.png  ',
+        ];
+        paths.forEach((path) => {
+            expect(
+                getBucketName({ path }),
+            ).toBe(undefined);
+        });
+    });
+    it('should return bucket name', () => {
+        const paths = [
             'admin_files/users/{UID}_image.png',
             '  admin_files/users/{UID}_image.png  ',
         ];
-        const bucketNames = [
-            'default',
-            'default',
-            'admin_files',
-            'admin_files',
-        ];
-        paths.forEach((path, index) => {
+        paths.forEach((path) => {
             expect(
-                getBucketName({ path, defaultBucketName: 'default' }),
-            ).toBe(bucketNames[index]);
+                getBucketName({ path }),
+            ).toBe('admin_files');
         });
     });
 });
