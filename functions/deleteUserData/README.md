@@ -36,7 +36,7 @@ To install this function add the required information to the form with the follo
     > **Note** Use of wildcard in Cloud Firestore paths is mandatory.
 
   - **firestoreDeleteRecursive**: Recursively delete documents subcollections. (Cloud Firestore only)
-  - **realtimeDatabaseName**: The Realtime Database instance where you want to delete user data. To find the database name, Go to Firebase console, select your project and navigate to the Realtime Database section. Depending on the region you choosed for your  project, the database name will be of the form `<databaseName>.firebaseio.com` or `<databaseName>.<region>.firebasedatabase.app`
+  - **realtimeDatabaseName**: The Realtime Database instance where you want to delete user data. To find the database name, Go to Firebase console, select your project and navigate to the Realtime Database section. Depending on the region you choosed for your project, the database name will be of the form `<databaseName>` or `<databaseName>.<region>`
 
   - **realtimeDatabasePaths**: A comma separated list of full paths that contain user data in your Realtime Database instance. Leave empty if you don't use Realtime Database. (You can represent the User ID of the deleted user with `{UID}` (e.g. `users/{UID}`). See examples below.
 
@@ -80,7 +80,7 @@ CONFIG={
 
 ```text
 CONFIG={
-    "realtimeDatabaseName": "my-database.firebaseio.com",
+    "realtimeDatabaseName": "my-database",
     "realtimeDatabasePaths": ["profile-images/{UID}-jpg", "users/{userId}"]
 }
 ```
