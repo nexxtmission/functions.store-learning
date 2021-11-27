@@ -12,7 +12,7 @@
     },
     "env": [
         {
-            "name": "CONFIG",
+            "name": "CONFIGURATION",
             "description": "The JSON object that represents the configuration options for deleting user data.",
             "type": "json",
             "required": true,
