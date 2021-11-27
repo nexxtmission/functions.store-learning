@@ -1,7 +1,11 @@
 {
     "name": "shortenUrl",
     "description": "Shorten URLs written to a specified Cloud Firestore collection with Bitly.",
-    "tags": [],
+    "tags": [
+        "url",
+        "bitly",
+        "firestore"
+    ],
     "trigger": {
         "provider": "firestore",
         "event": "document.write",
