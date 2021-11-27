@@ -1,7 +1,11 @@
 {
     "name": "deleteUserData",
     "description": "Remove data from Cloud Firestore, Realtime Database, and/or Cloud Storage when a user account is deleted.",
-    "tags": [],
+    "tags": [
+        "firestore",
+        "authentication",
+        "user data"
+    ],
     "trigger": {
         "provider": "auth",
         "event": "user.delete"
@@ -9,7 +13,7 @@
     "env": [
         {
             "name": "CONFIGURATION",
-            "description": "The function config",
+            "description": "The JSON object that represents the configuration options for deleting user data.",
             "type": "json",
             "required": true,
             "default": {    
