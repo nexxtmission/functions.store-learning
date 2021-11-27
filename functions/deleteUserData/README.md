@@ -1,6 +1,6 @@
 ### How this function works
 
- Use this function to automatically delete all user's data when deleted from your authenticated users.
+Use this function to automatically delete all user's data when deleted from your authenticated users.
 
 You can configure this function to delete user data from any or all of the following: Cloud Firestore, Realtime Database, or Cloud Storage. Data must be keyed to the user's UserId.
 
