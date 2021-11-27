@@ -34,9 +34,9 @@ To create an invoice, it is required to provide:
 - The list of payments (represented as a list of `items`). Each item must include:
 
   - **amount** (required): A numeric value reprensenting the price.
-  - **currency** (required): A string reprensenting the currency. e.g., `usd`.
+  - **currency** (required): A string reprensenting the currency, e.g., `usd`.
   - **description** (required): A descriptive text for the item.
-  - **quantity** (optional): A number value representing the quantity. If omitted, the default value will be 1.
+  - **quantity** (optional): A numeric value representing the quantity. If omitted, the default value will be 1.
   - **tax_rates** (optional): An array of strings.
 
 - **daysUntilDue** (optional): The number of days a customer has to pay the invoice before it’s closed. This value defaults to ${param:DAYS_UNTIL_DUE_DEFAULT}.
@@ -123,3 +123,9 @@ Here are some sample documents to reprensent an invoice:
   ],
 }
 ```
+
+### Resources
+
+- [Stripe](https://stripe.com/)
+- [Stripe API key](https://dashboard.stripe.com/apikeys)
+- [Firebase Authentication](https://firebase.google.com/docs/auth)
