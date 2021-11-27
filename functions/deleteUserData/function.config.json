@@ -34,10 +34,7 @@
                         "type": "boolean",
                         "default": false
                     },
-                    "realtimeDatabaseUrl": {
-                        "type": "string",
-                        "format": "url"
-                    },
+                    "realtimeDatabaseUrl": { "type": "string" },
                     "realtimeDatabasePaths": {
                         "type": "array",
                         "items": { "type": "string" }
