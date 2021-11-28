@@ -8,9 +8,8 @@ const user = { uid: '123' };
 const emptyConfig = {
     firestorePaths: '',
     firestoreDeleteRecursive: false,
-    realtimeDatabaseInstance: '',
+    realtimeDatabaseUrl: '',
     realtimeDatabasePaths: '',
-    storageDefaultBucket: '',
     storagePaths: '',
 };
 
@@ -82,7 +81,6 @@ describe('deleteUserData()', () => {
         expect.assertions(3);
         getConfig.mockReturnValue({
             ...emptyConfig,
-            storageDefaultBucketName: 'bucket_name',
             storagePaths: '{DEFAULT}/users/profile_{uid}.png,user_files/{uid}',
         });
         await deleteUserData(user);
@@ -91,7 +89,6 @@ describe('deleteUserData()', () => {
         expect(deleteDataFromStorage).toHaveBeenCalledWith({
             paths: '{DEFAULT}/users/profile_{uid}.png,user_files/{uid}',
             uid: '123',
-            defaultBucketName: 'bucket_name',
         });
     });
 });

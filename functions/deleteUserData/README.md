@@ -23,9 +23,8 @@ To install this function, add the required information to the form with the foll
     {
       "firestorePaths": ["documents/{UID}"],
       "firestoreDeleteRecursive": false,
-      "realtimeDatabaseName": "my-rt-database",
+      "realtimeDatabaseUrl": "https://my-database.firebaseio.com",
       "realtimeDatabasePaths": ["collection/{UID}"],
-      "storageDefaultBucketName": "user_files",
       "storagePaths": ["{DEFAULT}/path/to/{UID}/files"]
     }
     ```
@@ -35,22 +34,18 @@ To install this function, add the required information to the form with the foll
   >The use of `{UID}` in Cloud Firestore paths is required.
 
   - **firestoreDeleteRecursive**: Recursively delete documents subcollections. (Cloud Firestore only).
-  - **realtimeDatabaseName**: The Realtime Database instance where you want to delete the user data. To find the database name, go to Firebase console, select your project, and navigate to the Realtime Database section. Depending on the region you chose for your project, the database name will be in the format `<databaseName>`, or `<databaseName>.<region>`.
+  - **realtimeDatabaseUrl**: The url to the Realtime Database instance where you want to delete user data. To find the database url, go to Firebase console, select your project, and navigate to the Realtime Database section. Depending on the region you chose for your project, the database url will be in the format `https://<databaseName>.firebaseio.com`, or `https://<databaseName>.<region>.firebaseio.com`.
   - **realtimeDatabasePaths**: A comma separated list of full paths that contain user data in your Realtime Database instance. Leave empty if you don't use Realtime Database. (You can represent the User ID of the deleted user with `{UID}`, e.g., `users/{UID}`). You will see an example in section **Function config examples. Example 2**.
 
   >The use of `{UID}` in Realtime Database paths is required.
 
-  - **storageDefaultBucketName**: The name of the bucket to be used as default. Must be set if you want to use the wildcard `{DEFAULT}`.
-  - **storagePaths**: A comma separated list of full paths to files or directories in your Google Cloud Storage buckets. Leave empty if you don't use Cloud Storage. (You can use `{UID}` to represent the User ID and `{DEFAULT}` to represent your default Storage bucket, e.g., `{DEFAULT}/{UID}-pic.png`, `my-app-logs/{UID}-logs.txt`).
+  - **storagePaths**: A comma separated list of full paths to files or directories in your Google Cloud Storage buckets. Leave empty if you don't use Cloud Storage. Storage paths must be in the form `<bucket name>/<path to storage object>`. (You can use `{UID}` to represent the User ID and `{DEFAULT}` to represent the default Storage bucket for your project, e.g., `{DEFAULT}/{UID}-pic.png`, `my-app-logs/{UID}-logs.txt`). You will see an example in section **Function config examples. Example 3**.
 
 >You can also use other wildcards to represent user's UserId: `{user}`, `{userId}`, `{uid}` or `{id}`. Lowercase and uppercase letters are treated as the same. Any other wildcard used as a placeholder for the UserId of the user will be ignored.
 
-As stated before, you can use `{DEFAULT}` in your storage paths to specify that the file is located in the default bucket. *Default* doesn't mean *"the default"* bucket for your project; it means that the bucket name will be used when `{DEFAULT}` appears in some path.
-
 It is not mandatory to set all the configuration fields, and you will not see errors when installing the function, but you must configure some of them conditionally:
 
-- If you set `realtimeDatabasePaths` to delete data from Realtime Database, then you must set `realtimeDatabaseName` as well.
-- You don't need to set `storageDefaultBucketName` unless you use `{DEFAULT}` in your storage paths. See **Function config examples. Example 3** to learn how to set configuration for Firebase Storage.
+- If you set `realtimeDatabasePaths` to delete data from Realtime Database, then you must set `realtimeDatabaseUrl` as well.
 
 This function uses other Firebase and Google Cloud Platform services, which have associated charges if you exceed the service’s free tier:
 
@@ -76,29 +71,21 @@ CONFIGURATION={
 
 ```text
 CONFIGURATION={
-    "realtimeDatabaseName": "my-database",
+    "realtimeDatabaseUrl": "https://my-database.firebaseio.com",
     "realtimeDatabasePaths": ["profile-images/{UID}-jpg", "users/{userId}"]
 }
 ```
 
 #### Example 3: Configuration to delete data in Firebase Storage
 
-In this example, we have a project named `dummy-project`, that contains two buckets: the app default bucket to store user files, and a second one named `log-files` to store user logs. To delete the user files from boths buckets, we can set the configuration as follows:
-
-Using `{DEAFULT}` placeholder and setting `storageDefaultBucketName`
+In this example, we have a project named `dummy-project`, that contains two buckets: the app default storage bucket to store user files, and a second one named `log-files` to store user logs. To delete the user files from boths buckets, we can set the configuration as follows:
 
 ```text
 CONFIGURATION={
-    "storageDefaultBucketName": "dummy-project.appspot.com",
-    "storagePaths": ["{DEFAULT}/profile-images/{UID}-jpg", "log-files/{userId}"]
-}
-```
-
-Or we can omit the `storageDefaultBucketName` and avoid using `{DEFAULT}`
-
-```text
-CONFIGURATION={
-    "storagePaths": ["dummy-project.appspot.com/profile-images/{UID}-jpg", "log-files/{userId}"]
+    "storagePaths": [
+      "{DEFAULT}/profile-images/{UID}-jpg",
+      "log-files/{userId}"
+    ]
 }
 ```
 
