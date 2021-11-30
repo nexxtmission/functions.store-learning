@@ -39,7 +39,7 @@ To install this function, add the required information to the form with the foll
 
   >The use of `{UID}` in Realtime Database paths is required.
 
-  - **storagePaths**: A comma separated list of full paths to files or directories in your Google Cloud Storage buckets. Leave empty if you don't use Cloud Storage. Storage paths must be in the form `<bucket name>/<path to storage object>`. (You can use `{UID}` to represent the User ID and `{DEFAULT}` to represent the default Storage bucket for your project, e.g., `{DEFAULT}/{UID}-pic.png`, `my-app-logs/{UID}-logs.txt`). You will see an example in section **Function config examples. Example 3**.
+  - **storagePaths**: A comma separated list of full paths to files or directories in your Google Cloud Storage buckets. Leave empty if you don't use Cloud Storage. Storage paths must be in the form `<bucket name>/<path to storage object>`. Paths to folders must end with a `/` (e.g., `{DEFAULT}/users/{uid}/`). (You can use `{UID}` to represent the User ID and `{DEFAULT}` to represent the default Storage bucket for your project, e.g., `{DEFAULT}/{UID}-pic.png`, `my-app-logs/{UID}-logs.txt`). You will see an example in section **Function config examples. Example 3**.
 
 >You can also use other wildcards to represent user's UserId: `{user}`, `{userId}`, `{uid}` or `{id}`. Lowercase and uppercase letters are treated as the same. Any other wildcard used as a placeholder for the UserId of the user will be ignored.
 
@@ -84,7 +84,7 @@ In this example, we have a project named `dummy-project`, that contains two buck
 CONFIGURATION={
     "storagePaths": [
       "{DEFAULT}/profile-images/{UID}-jpg",
-      "log-files/{userId}"
+      "log-files/{userId}/"
     ]
 }
 ```
