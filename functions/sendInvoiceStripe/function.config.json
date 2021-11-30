@@ -8,8 +8,8 @@
         "resource": "/invoices/{invoiceId}"
     },
     "env": [{
-        "name": "STRIPE_API_KEY",
-        "description": "The API key to access Stripe services.",
+        "name": "STRIPE_SECRET_KEY",
+        "description": "Your Stripe secret API key. See https://stripe.com/docs/keys.",
         "required": true
     }, {
         "name": "DAYS_UNTIL_DUE_DEFAULT",
