@@ -1,0 +1,60 @@
+{
+    "name": "validateAddressWithShipEngine",
+    "description": "Validate addresses around the world with ShipEngine",
+    "tags": [],
+    "trigger": {
+        "provider": "https",
+        "event": "call"
+    },
+    "env": [
+        {
+            "name": "SHIPENGINE_API_KEY",
+            "type": "text",
+            "description": "The ShipEngine API key",
+            "required": true
+        },
+        {
+            "name": "VALIDATION_FIELD_NAME",
+            "type": "text",
+            "description": "The name of the field, in the response object, where validation results will be stored.",
+            "required": true,
+            "default": "validation"
+        },
+        {
+            "name": "DATA_MAPPING",
+            "type": "json",
+            "description": "A JSON object that defines how the data is mapped to ShipEngine API structure.",
+            "required": true,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "name": { "type": "string" },
+                    "phone": { "type": "string" },
+                    "companyName": { "type": "string" },
+                    "addressLine1": { "type": "string" },
+                    "addressLine2": { "type": "string" },
+                    "addressLine3": { "type": "string" },
+                    "cityLocality": { "type": "string" },
+                    "stateProvince": { "type": "string" },
+                    "postalCode": { "type": "string" },
+                    "countryCode": { "type": "string" },
+                    "addressResidentialIndicator": { "type": "string" }
+                },
+                "required": ["addressLine1", "cityLocality", "stateProvince", "countryCode"]
+            },
+            "default": {
+                "name": "name",
+                "phone": "phone",
+                "companyName": "companyName",
+                "addressLine1": "addressLine1",
+                "addressLine2": "addressLine2",
+                "addressLine3": "addressLine3",
+                "cityLocality": "cityLocality",
+                "stateProvince": "stateProvince",
+                "postalCode": "postalCode",
+                "countryCode": "countryCode",
+                "addressResidentialIndicator": "addressResidentialIndicator"
+            }
+        }
+    ]
+}
