@@ -30,8 +30,8 @@ To install this function, add the required information to the form with the foll
 
 To create an invoice, it is required to provide:
 
-- An `email` address or a Firebase Authentication user ID (`uid`).
-- The list of payments (represented as a list of `items`). Each item must include:
+- **stripeUid**: The customer `id` from Stripe.
+- **items**: The list of payments. Each payment must include:
 
   - **amount** (required): A numeric value reprensenting the price.
   - **currency** (required): A string reprensenting the currency, e.g., `usd`.
@@ -49,7 +49,7 @@ Here are some sample documents to reprensent an invoice:
 
 ```javascript
 {
-  email: 'customer@example.com',
+  stripeUid: 'cus_1234',
   items: [{
       amount: 1999,
       currency: 'usd',
@@ -64,25 +64,11 @@ Here are some sample documents to reprensent an invoice:
 }
 ```
 
-##### Example #2: An invoice with customer `uid`
+##### Example #2: An invoice with tax rates
 
 ```javascript
 {
-  uid: 'APkKkSLsT6cjxsCqYMh3Gi0TZtl5',
-  items: [{
-      amount: 5000,
-      currency: 'usd',
-      description: 'A pair of shoes'
-  }],
-  daysUntilDue: 2
-}
-```
-
-##### Example #3: An invoice with tax rates
-
-```javascript
-{
-  email: 'user@domain.com',
+  stripeUid: 'cus_1234',
   default_tax_rates: ['txr_1HCkCjYHgolSFC23vh4cyHB6'],
   items: [
     {
@@ -100,7 +86,7 @@ Here are some sample documents to reprensent an invoice:
 }
 ```
 
-##### Example #4: An invoice with transfer_data
+##### Example #3: An invoice with transfer_data
 
 ```javascript
 {
@@ -108,7 +94,7 @@ Here are some sample documents to reprensent an invoice:
     destination: 'acct_1234',
     amount: 2114,
   },
-  email: 'user@domain.com',
+  stripeUid: 'cus_1234',
   items: [
     {
       amount: 1099,

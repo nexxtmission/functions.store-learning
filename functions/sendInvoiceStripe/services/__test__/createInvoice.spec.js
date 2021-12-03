@@ -11,7 +11,7 @@ jest.mock('../stripe', () => ({
 Logger.error = jest.fn();
 
 const fakeData = {
-    customer: { id: 'user1', email: 'user@domain.com' },
+    customerId: 'cus_123',
     orderItems: [{ currency: 'usd' }, { currency: 'usd' }],
     daysUntilDue: 7,
     idempotencyKey: 'event-1',
@@ -32,7 +32,7 @@ describe('createInvoice()', () => {
             {
                 errorMessage: 'Error occur while making a request to the Stripe API',
                 params: {
-                    customer: { id: 'user1', email: 'user@domain.com' },
+                    customerId: 'cus_123',
                     orderItems: [{ currency: 'usd' }, { currency: 'usd' }],
                     daysUntilDue: 7,
                     defaultTaxRates: null,
@@ -50,7 +50,7 @@ describe('createInvoice()', () => {
         expect(stripe.invoiceItems.create).toHaveBeenCalledTimes(2);
         expect(stripe.invoices.create).toHaveBeenCalledWith(
             {
-                customer: 'user1',
+                customer: 'cus_123',
                 collection_method: 'send_invoice',
                 days_until_due: 7,
                 auto_advance: true,

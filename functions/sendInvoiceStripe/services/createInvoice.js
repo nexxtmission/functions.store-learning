@@ -2,7 +2,7 @@ const Logger = require('firebase-functions/lib/logger');
 const stripe = require('./stripe');
 
 const createInvoice = async ({
-    customer,
+    customerId,
     orderItems,
     daysUntilDue,
     idempotencyKey,
@@ -14,7 +14,7 @@ const createInvoice = async ({
         const promises = orderItems.map(
             (item, index) => stripe.invoiceItems.create(
                 {
-                    customer: customer.id,
+                    customer: customerId,
                     unit_amount: item.amount,
                     currency: item.currency,
                     quantity: item.quantity || 1,
@@ -28,7 +28,7 @@ const createInvoice = async ({
         await Promise.all(promises);
 
         const invoiceParams = {
-            customer: customer.id,
+            customer: customerId,
             collection_method: 'send_invoice',
             days_until_due: daysUntilDue,
             auto_advance: true,
@@ -50,7 +50,7 @@ const createInvoice = async ({
         Logger.error('ERROR_CREATE_INVOICE', {
             errorMessage: 'Error occur while making a request to the Stripe API',
             params: {
-                customer,
+                customerId,
                 orderItems,
                 daysUntilDue,
                 defaultTaxRates,
