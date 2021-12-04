@@ -2,6 +2,8 @@
 
 You can use this function to obtain calculated real-time shipping rates across global carriers using [ShipEngine](https://www.shipengine.com/).
 
+> Rates estimation is not exact as they may not include things like insurance amount, fuel surcharges, customs charges, or other carrier fees.
+
 ### Prerequisites
 
 - You must have previous knowledge of **Firebase**.
@@ -21,13 +23,17 @@ To install this function, add the required information to the form with the foll
 
 Once the function is installed, you can start using it in your project.
 
-Call the function passing either a `shipmentId` or a `shipment` object as described in [ShipEngine API]().
+Call the function passing either a `shipmentId` or a `shipment` object as described in [ShipEngine API](https://www.shipengine.com/docs/rates/estimate/). Use camel case for properties. (e.g., `serviceCodes` instead `service_codes`).
 
-> Use camel case for properties. (e.g., `serviceCodes` instead `service_codes`).
+You can also pass additional options to calculate rates in `rateOptions`. See examples section.
 
-Here are some examples of how to call this function from your app with JavaScript.
+The command will return the calculated rates as a property keyed as {param:RATES_FIELD_NAME}.
+
+> A full response object can be foound in *Example Response* from [Calculate Shipping Costs](https://www.shipengine.com/docs/rates/) section in ShipEngine API docs.
 
 ### Usage examples
+
+Here are some examples of how to call this function from your app with JavaScript.
 
 #### Example #1: getting rates using shipment id
 
