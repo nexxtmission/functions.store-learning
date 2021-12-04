@@ -8,10 +8,6 @@ jest.mock('../services/getConfig', () => ({
 }));
 
 describe('getShippingRatesFromShipEngine()', () => {
-    it('should not calculate shipping rates if auth fails', async () => {
-        expect.assertions(1);
-        await expect(getShippingRatesFromShipEngine({}, {})).rejects.toThrow();
-    });
     it('should not calculate shipping rates if both shipment and shipmentId are passed', async () => {
         expect.assertions(1);
         await expect(
