@@ -2,7 +2,7 @@ const functions = require('firebase-functions');
 const calculateShippingRates = require('./services/calculateShippingRates');
 const getConfig = require('./services/getConfig');
 
-const getShippingRatesFromShipEngine = async (data, context) => {
+const getShippingRatesFromShipEngine = async (data) => {
     const { shipment, shipmentId } = data;
     if (!!shipment && !!shipmentId) {
         throw new functions.https.HttpsError(
