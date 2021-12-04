@@ -4,4 +4,4 @@ const getConfig = () => ({
     carriersIds: JSON.parse(process.env.CARRIERS_IDS),
 });
 
-module.exports = getConfig();
+module.exports = getConfig;

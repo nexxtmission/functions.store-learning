@@ -2,10 +2,10 @@ const getShippingRatesFromShipEngine = require('../main');
 const calculateShippingRates = require('../services/calculateShippingRates');
 
 jest.mock('../services/calculateShippingRates', () => jest.fn());
-jest.mock('../services/getConfig', () => ({
+jest.mock('../services/getConfig', () => jest.fn(() => ({
     carriersIds: ['se-123456'],
     ratesFieldName: 'rates',
-}));
+})));
 
 describe('getShippingRatesFromShipEngine()', () => {
     it('should not calculate shipping rates if both shipment and shipmentId are passed', async () => {

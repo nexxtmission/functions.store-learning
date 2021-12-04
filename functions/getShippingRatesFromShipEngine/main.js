@@ -1,5 +1,6 @@
+const functions = require('firebase-functions');
 const calculateShippingRates = require('./services/calculateShippingRates');
-const config = require('./services/getConfig');
+const getConfig = require('./services/getConfig');
 
 const getShippingRatesFromShipEngine = async (data, context) => {
     const { shipment, shipmentId } = data;
@@ -10,7 +11,7 @@ const getShippingRatesFromShipEngine = async (data, context) => {
         );
     }
 
-    const { carriersIds, ratesFieldName } = config;
+    const { carriersIds, ratesFieldName } = getConfig();
     const result = await calculateShippingRates({
         shipmentData: data,
         carriers: carriersIds,
