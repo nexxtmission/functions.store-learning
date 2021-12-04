@@ -24,7 +24,8 @@ To install this function, add the required information to the form with the foll
 - **STRIPE_SECRET_KEY**: Your Stripe secret API key. See https://stripe.com/docs/keys.
 - **DAYS_UNTIL_DUE_DEFAULT**: The default number of days the customer has before the payment due date.
 
-### Using this extension
+
+### Using this function
 
 #### Create an invoice
 
@@ -33,13 +34,13 @@ To create an invoice, it is required to provide:
 - **stripeUid**: The customer `id` from Stripe.
 - **items**: The list of payments. Each payment must include:
 
-  - **amount** (required): A numeric value reprensenting the price.
+  - **amount** (required): A numeric value reprensenting the price in cents.
   - **currency** (required): A string reprensenting the currency, e.g., `usd`.
-  - **description** (required): A descriptive text for the item.
+  - **description** (optional): A descriptive text for the item.
   - **quantity** (optional): A numeric value representing the quantity. If omitted, the default value will be 1.
   - **tax_rates** (optional): An array of strings.
 
-- **daysUntilDue** (optional): The number of days a customer has to pay the invoice before it’s closed. This value defaults to ${param:DAYS_UNTIL_DUE_DEFAULT}.
+- **daysUntilDue** (optional): The number of days a customer has to pay the invoice before it’s closed. This value defaults to DAYS_UNTIL_DUE_DEFAULT.
 - **default_tax_rates** (optional): An array of tax rates that can be applied to items.
 - **transfer_data** (optional): A [transfer_data](https://stripe.com/docs/api/invoices/create#create_invoice-transfer_data) object to send funds to a connected account after a successful payment.
 
