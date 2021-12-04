@@ -6,7 +6,7 @@ Though every country in the world is supported, validation precision  may vary. 
 
 ### Prerequisites
 
-* You must have previous knowledge of **Firebase**.
+- You must have previous knowledge of **Firebase**.
 - You must have previous knowledge of **ShipEngine**.
 
 ### Function details
