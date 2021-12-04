@@ -4,9 +4,9 @@ const validateAddress = require('../services/validateAddress');
 
 jest.mock('../helpers/mapDataAccordingToSchema', () => jest.fn());
 jest.mock('../services/validateAddress', () => jest.fn());
-jest.mock('../services/getConfig', () => ({
+jest.mock('../services/getConfig', () => jest.fn(() => ({
     fieldsMapping: 'mappingSchema',
-}));
+})));
 
 describe('validateAddressWithShipEngine()', () => {
     beforeEach(() => jest.clearAllMocks());

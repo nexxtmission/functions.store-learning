@@ -4,9 +4,9 @@ const shipengine = require('../shipengine');
 jest.mock('../shipengine', () => ({
     validateAddresses: jest.fn(),
 }));
-jest.mock('../getConfig', () => ({
+jest.mock('../getConfig', () => jest.fn(() => ({
     validationFieldName: 'validation',
-}));
+})));
 
 const params = {
     name: 'John Smith',

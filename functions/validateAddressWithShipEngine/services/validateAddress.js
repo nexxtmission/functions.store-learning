@@ -1,13 +1,14 @@
 const shipEngine = require('./shipengine');
-const config = require('./getConfig');
+const getConfig = require('./getConfig');
 
 const validateAddress = async (params) => {
+    const { validationFieldName } = getConfig();
     try {
         const [result] = await shipEngine.validateAddresses([params]);
-        return { [config.validationFieldName]: result };
+        return { [validationFieldName]: result };
     } catch (error) {
         return {
-            [config.validationFieldName]: {
+            [validationFieldName]: {
                 error: error.message,
             },
         };

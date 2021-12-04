@@ -21,10 +21,6 @@ describe('mapDataAccordingToSchema()', () => {
         }, {
             name: 'John Smith',
             address: ['200 Sunrise Mall', 'Massapequa', 'NY', '11758', 'US'],
-        }, {
-            name: 'John Smith',
-            addressLine1: '200 Sunrise Mall',
-            countryCode: 'US',
         }];
         const schemas = [{
             name: 'name',
@@ -47,44 +43,18 @@ describe('mapDataAccordingToSchema()', () => {
             stateProvince: 'address[2]',
             postalCode: 'address[3]',
             countryCode: 'address[4]',
-        }, {
-            name: 'name',
-            addressLine1: 'addressLine1',
-            cityLocality: 'cityLocality',
-            stateProvince: 'stateProvince',
-            postalCode: 'postalCode',
-            countryCode: 'countryCode',
-        }];
-        const results = [{
-            name: 'John Smith',
-            addressLine1: '200 Sunrise Mall',
-            cityLocality: 'Massapequa',
-            stateProvince: 'NY',
-            postalCode: '11758',
-            countryCode: 'US',
-        }, {
-            name: 'John Smith',
-            addressLine1: '200 Sunrise Mall',
-            cityLocality: 'Massapequa',
-            stateProvince: 'NY',
-            postalCode: '11758',
-            countryCode: 'US',
-        }, {
-            name: 'John Smith',
-            addressLine1: '200 Sunrise Mall',
-            cityLocality: 'Massapequa',
-            stateProvince: 'NY',
-            postalCode: '11758',
-            countryCode: 'US',
-        }, {
-            name: 'John Smith',
-            addressLine1: '200 Sunrise Mall',
-            countryCode: 'US',
         }];
         documents.forEach(
             (document, index) => expect(
                 mapDataAccordingToSchema(document, schemas[index]),
-            ).toEqual(results[index]),
+            ).toEqual({
+                name: 'John Smith',
+                addressLine1: '200 Sunrise Mall',
+                cityLocality: 'Massapequa',
+                stateProvince: 'NY',
+                postalCode: '11758',
+                countryCode: 'US',
+            }),
         );
     });
 });

@@ -4,4 +4,4 @@ const getConfig = () => ({
     fieldsMapping: JSON.parse(process.env.DATA_MAPPING),
 });
 
-module.exports = getConfig();
+module.exports = getConfig;
