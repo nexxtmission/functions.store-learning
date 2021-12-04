@@ -10,11 +10,6 @@ jest.mock('../services/getConfig', () => ({
 
 describe('validateAddressWithShipEngine()', () => {
     beforeEach(() => jest.clearAllMocks());
-    it('should not validate address if auth fails', async () => {
-        expect.assertions(2);
-        await expect(validateAddressWithShipEngine({}, {})).rejects.toThrow();
-        expect(validateAddress).not.toHaveBeenCalledWith();
-    });
     it('should validate address', async () => {
         expect.assertions(2);
         mapDataAccordingToSchema.mockReturnValue('data mapped');
