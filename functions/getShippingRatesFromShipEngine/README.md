@@ -27,7 +27,53 @@ Call the function passing either a `shipmentId` or a `shipment` object as descri
 
 You can also pass additional options to calculate rates in `rateOptions`. See examples section.
 
-The command will return the calculated rates as a property keyed as {param:RATES_FIELD_NAME}.
+The command will return the list of calculated rates as a property keyed with the value in `RATES_FIELD_NAME` config.
+
+An example response (assuming that we have set the value of `RATES_FIELD_NAME` to "rates"):
+
+```json
+{
+    "rates": [{
+        "rateId": "se-1234",
+        "rateType": "shipment",
+        "carrierId": "se-1179703",
+        "shippingAmount": {
+            "currency": "usd",
+            "amount": 0.53
+        },
+        "insuranceAmount": {
+            "currency": "usd",
+            "amount": 0
+        },
+        "confirmationAmount": {
+            "currency": "usd",
+            "amount": 0
+        },
+        "otherAmount": {
+            "currency": "usd",
+            "amount": 0
+        },
+        "taxAmount": null,
+        "zone": 7,
+        "packageType": "letter",
+        "deliveryDays": 4,
+        "guaranteedService": false,
+        "estimatedDeliveryDate": "2021-12-11T00:00:00Z",
+        "carrierDeliveryDays": "4",
+        "shipDate": "2021-12-07T00:00:00Z",
+        "negotiatedRate": false,
+        "serviceType": "USPS First Class Mail",
+        "serviceCode": "usps_first_class_mail",
+        "trackable": false,
+        "carrierCode": "stamps_com",
+        "carrierNickname": "ShipEngine Test Account - Stamps.com",
+        "carrierFriendlyName": "Stamps.com",
+        "validationStatus": "valid",
+        "warningMessages": [],
+        "errorMessages": []
+    }]
+}
+```
 
 > A full response object can be foound in *Example Response* from [Calculate Shipping Costs](https://www.shipengine.com/docs/rates/) section in ShipEngine API docs.
 
