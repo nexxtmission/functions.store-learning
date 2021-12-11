@@ -75,7 +75,7 @@ An example response (assuming that we have set the value of `RATES_FIELD_NAME` t
 }
 ```
 
-> A full response object can be foound in *Example Response* from [Calculate Shipping Costs](https://www.shipengine.com/docs/rates/) section in ShipEngine API docs.
+> A full response object can be found in *Example Response* from [Calculate Shipping Costs](https://www.shipengine.com/docs/rates/) section in ShipEngine API docs.
 
 ### Usage examples
 
