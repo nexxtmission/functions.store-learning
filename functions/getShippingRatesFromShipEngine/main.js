@@ -11,11 +11,10 @@ const getShippingRatesFromShipEngine = async (data) => {
         );
     }
 
-    const { carriersIds, ratesFieldName } = getConfig();
+    const { carriersIds } = getConfig();
     const result = await calculateShippingRates({
         shipmentData: data,
         carriers: carriersIds,
-        ratesKey: ratesFieldName,
     });
     return result;
 };

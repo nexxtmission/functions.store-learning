@@ -1,7 +1,9 @@
+const functions = require('firebase-functions');
+const Logger = require('firebase-functions/lib/logger');
 const get = require('lodash.get');
 const shipEngine = require('./shipengine');
 
-const calculateShippingRates = async ({ shipmentData, carriers, ratesKey }) => {
+const calculateShippingRates = async ({ shipmentData, carriers }) => {
     try {
         const { rateOptions, ...shipmentOptions } = shipmentData;
         const result = await shipEngine.getRatesWithShipmentDetails({
@@ -11,14 +13,16 @@ const calculateShippingRates = async ({ shipmentData, carriers, ratesKey }) => {
                 carrierIds: carriers,
             },
         });
-        const rates = get(result, 'rateResponse.rates');
-        return { [ratesKey]: rates };
+        return get(result, 'rateResponse.rates');
     } catch (error) {
-        return {
-            [ratesKey]: {
-                error: error.message,
-            },
-        };
+        Logger.error('CALCULATE_SHIPPING_RATES', {
+            errorMessage: error.message,
+            params: shipmentData,
+        });
+        throw new functions.https.HttpsError(
+            'unknown',
+            error.message,
+        );
     }
 };
 

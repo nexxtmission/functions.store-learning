@@ -1,9 +1,15 @@
+const Logger = require('firebase-functions/lib/logger');
 const calculateShippingRates = require('../calculateShippingRates');
 const shipengine = require('../shipengine');
 
+jest.mock('firebase-functions/lib/logger');
 jest.mock('../shipengine', () => ({
-    getRatesWithShipmentDetails: jest.fn(),
+    getRatesWithShipmentDetails: jest.fn(
+        () => Promise.resolve({ rateResponse: { rates: 'calculated rates' } }),
+    ),
 }));
+
+Logger.error = jest.fn();
 
 describe('calculateShippingRates()', () => {
     beforeEach(() => jest.clearAllMocks());
@@ -56,7 +62,6 @@ describe('calculateShippingRates()', () => {
             await calculateShippingRates({
                 shipmentData,
                 carriers: ['se-123456'],
-                ratesKey: 'rates',
             });
             expect(shipengine.getRatesWithShipmentDetails)
                 .toHaveBeenCalledWith(params[index]);
@@ -64,24 +69,18 @@ describe('calculateShippingRates()', () => {
     });
     it('should return validation data from ShipEngine', async () => {
         expect.assertions(1);
-        shipengine.getRatesWithShipmentDetails.mockReturnValue(
-            Promise.resolve({ rateResponse: { rates: 'calculated rates' } }),
-        );
         const result = await calculateShippingRates({
             shipmentData: { shipmentId: 'se-123' },
             carriers: ['se-123456'],
-            ratesKey: 'rates',
         });
-        expect(result).toEqual({ rates: 'calculated rates' });
+        expect(result).toBe('calculated rates');
     });
     it('should return error if validation fails', async () => {
         expect.assertions(1);
         shipengine.getRatesWithShipmentDetails.mockReturnValue(Promise.reject(new Error('something happened')));
-        const result = await calculateShippingRates({
+        await expect(calculateShippingRates({
             shipmentData: { shipmentId: 'se-123' },
             carriers: ['se-123456'],
-            ratesKey: 'rates',
-        });
-        expect(result).toEqual({ rates: { error: 'something happened' } });
+        })).rejects.toThrow();
     });
 });

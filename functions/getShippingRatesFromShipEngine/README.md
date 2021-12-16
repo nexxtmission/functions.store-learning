@@ -14,7 +14,6 @@ You can use this function to obtain calculated real-time shipping rates across g
 To install this function, add the required information to the form with the following parameters:
 
 - **SHIPENGINE_API_KEY**: The ShipEngine API key.
-- **RATES_FIELD_NAME**: The name of the field in the response object where the calculated rates will be stored.
 - **CARRIERS_IDS**: An array of carriers ids from your ShipEngine account.
 
 > All fields are required.
@@ -23,7 +22,7 @@ To install this function, add the required information to the form with the foll
 
 Once the function is installed, you can start using it in your project.
 
-Call the function passing either a `shipmentId` or a `shipment` object as described in [ShipEngine API](https://www.shipengine.com/docs/rates/estimate/). Use camel case for properties. (e.g., `serviceCodes` instead `service_codes`).
+Call the function passing either the `shipmentId` obtained from ShipEngine (see [Create a Shipment](https://www.shipengine.com/docs/shipping/create-a-shipment/)) or a `shipment` object as described in [Estimate a Rate](https://www.shipengine.com/docs/rates/estimate/). Use camel case for properties. (e.g., `serviceCodes` instead `service_codes`).
 
 You can also pass additional options to calculate rates in `rateOptions`. See examples section.
 

@@ -14,13 +14,6 @@
             "required": true
         },
         {
-            "name": "RATES_FIELD_NAME",
-            "type": "text",
-            "description": "The name of the field, in the response object, to store calculated rates.",
-            "required": true,
-            "default": "rates"
-        },
-        {
             "name": "CARRIERS_IDS",
             "type": "json",
             "description": "The list of Carrier IDs from your ShipEngine account",
