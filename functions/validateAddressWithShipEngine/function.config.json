@@ -14,13 +14,6 @@
             "required": true
         },
         {
-            "name": "VALIDATION_FIELD_NAME",
-            "type": "text",
-            "description": "The name of the field, in the response object, where validation results will be stored.",
-            "required": true,
-            "default": "validation"
-        },
-        {
             "name": "DATA_MAPPING",
             "type": "json",
             "description": "A JSON object that defines how the data is mapped to ShipEngine API structure.",

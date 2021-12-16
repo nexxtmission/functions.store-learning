@@ -14,7 +14,6 @@ Though every country in the world is supported, validation precision  may vary. 
 To install this function, add the required information to the form with the following parameters:
 
 - **SHIPENGINE_API_KEY**: The ShipEngine API key.
-- **VALIDATION_FIELD_NAME**: The name of the field in the document where the address validation results will be stored. (e.g., validation). See documentation for [ShipEngine Address Validation](https://www.shipengine.com/docs/addresses/validation/)
 - **DATA_MAPPING**: A JSON object that defines how the data is mapped to ShipEngine API structure. See section **Data mapping**.
 
 > All fields are required.

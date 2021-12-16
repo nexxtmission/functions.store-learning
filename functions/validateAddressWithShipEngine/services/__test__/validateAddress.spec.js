@@ -1,12 +1,13 @@
+const Logger = require('firebase-functions/lib/logger');
 const validateAddress = require('../validateAddress');
 const shipengine = require('../shipengine');
 
+jest.mock('firebase-functions/lib/logger');
 jest.mock('../shipengine', () => ({
-    validateAddresses: jest.fn(),
+    validateAddresses: jest.fn(() => Promise.resolve(['validation result'])),
 }));
-jest.mock('../getConfig', () => jest.fn(() => ({
-    validationFieldName: 'validation',
-})));
+
+Logger.error = jest.fn();
 
 const params = {
     name: 'John Smith',
@@ -26,14 +27,12 @@ describe('validateAddress()', () => {
     });
     it('should return validation data from ShipEngine', async () => {
         expect.assertions(1);
-        shipengine.validateAddresses.mockReturnValue(Promise.resolve(['validation result']));
         const result = await validateAddress(params);
-        expect(result).toEqual({ validation: 'validation result' });
+        expect(result).toBe('validation result');
     });
-    it('should return error if validation fails', async () => {
+    it('should throw error if validation fails', async () => {
         expect.assertions(1);
         shipengine.validateAddresses.mockReturnValue(Promise.reject(new Error('something happened')));
-        const result = await validateAddress(params);
-        expect(result).toEqual({ validation: { error: 'something happened' } });
+        await expect(validateAddress(params)).rejects.toThrow();
     });
 });
