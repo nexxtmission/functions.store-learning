@@ -21,10 +21,9 @@
             "schema": {
                 "type": "array",
                 "uniqueItems": true,
-                "minItems": 1,
                 "items": { "type": "string" }
             },
-            "default": {}
+            "default": []
         }
     ]
 }
