@@ -1,6 +1,6 @@
 {
-    "name": "delete-user-data",
-    "version": "0.0.2",
+    "name": "validate-address-with-shipengine",
+    "version": "0.0.1",
     "license": "ISC",
     "directories": {
         "lib": "lib",
@@ -11,6 +11,8 @@
     ],
     "dependencies": {
         "firebase-admin": "^9.5.0",
-        "firebase-functions": "^3.13.2"
+        "firebase-functions": "^3.13.2",
+        "lodash.get": "^4.4.2",
+        "shipengine": "^1.0.0"
     }
 }
