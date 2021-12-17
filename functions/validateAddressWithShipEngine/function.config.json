@@ -1,7 +1,11 @@
 {
     "name": "validateAddressWithShipEngine",
-    "description": "Validate addresses around the world with ShipEngine",
-    "tags": [],
+    "description": "Callable function to validate addresses around the world with ShipEngine.",
+    "tags": [
+        "validation",
+        "ShipEngine",
+        "address"
+    ],
     "trigger": {
         "provider": "https",
         "event": "call"
@@ -10,7 +14,7 @@
         {
             "name": "SHIPENGINE_API_KEY",
             "type": "text",
-            "description": "The ShipEngine API key",
+            "description": "The ShipEngine API Key.",
             "required": true
         },
         {
