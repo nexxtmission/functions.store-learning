@@ -1,17 +1,15 @@
 {
   "name": "root",
   "private": true,
+  "engines": {
+    "node": "16"
+  },
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "lint": "eslint . --ignore-pattern node_modules",
-    "test": "jest --verbose",
-    "fstore:login": "fstore login",
-    "fstore:lint": "fstore lint",
-    "fstore:push": "fstore push"
+    "test": "jest --verbose"
   },
   "devDependencies": {
-    "@fstore/cli": "^0.17.2",
-    "coveralls": "^3.1.1",
     "eslint": "^7.20.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-fstore": "^0.0.5",
@@ -27,5 +25,9 @@
     "hooks": {
       "pre-push": "yarn lint && yarn test"
     }
+  },
+  "volta": {
+    "node": "16.13.1",
+    "yarn": "1.22.10"
   }
 }
