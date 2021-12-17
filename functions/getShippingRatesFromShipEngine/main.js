@@ -6,7 +6,7 @@ const getShippingRatesFromShipEngine = async (data) => {
     const { shipment, shipmentId } = data;
     if (!!shipment && !!shipmentId) {
         throw new functions.https.HttpsError(
-            'failed_precondition',
+            'invalid-argument',
             'You must specify either `shipment` or `shipmentId` but not both.',
         );
     }
