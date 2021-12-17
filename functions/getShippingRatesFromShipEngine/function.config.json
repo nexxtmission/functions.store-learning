@@ -1,0 +1,29 @@
+{
+    "name": "getShippingRatesFromShipEngine",
+    "description": "Calculates real-time shipping rates across 60+ carriers using shipment data.",
+    "tags": [],
+    "trigger": {
+        "provider": "https",
+        "event": "call"
+    },
+    "env": [
+        {
+            "name": "SHIPENGINE_API_KEY",
+            "type": "text",
+            "description": "The ShipEngine API key",
+            "required": true
+        },
+        {
+            "name": "CARRIERS_IDS",
+            "type": "json",
+            "description": "The list of Carrier IDs from your ShipEngine account",
+            "required": true,
+            "schema": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": { "type": "string" }
+            },
+            "default": []
+        }
+    ]
+}
