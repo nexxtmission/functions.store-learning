@@ -2,7 +2,7 @@
 
 You can use this function to ensure valid addresses around the world with [ShipEngine](https://www.shipengine.com/).
 
-Though every country in the world is supported, validation precision  may vary. [See the full list of countries and their level of validation](https://www.shipengine.com/docs/addresses/validation/countries/)
+Though every country in the world is supported, validation precision may vary. See the [full list of countries](https://www.shipengine.com/docs/addresses/validation/countries/) and their level of validation.
 
 ### Prerequisites
 
@@ -13,14 +13,14 @@ Though every country in the world is supported, validation precision  may vary. 
 
 To install this function, add the required information to the form with the following parameters:
 
-- **SHIPENGINE_API_KEY**: The ShipEngine API key.
+- **SHIPENGINE_API_KEY**: The ShipEngine API Key.
 - **DATA_MAPPING**: A JSON object that defines how the data is mapped to ShipEngine API structure. See section **Data mapping**.
 
 > All fields are required.
 
 ### Data mapping
 
-As described before, is is required to map your data to ShipEngine. The mapping object is defined as:
+As described before, it is required to map your data to ShipEngine. The mapping object is defined as:
 
 ```json
 {
@@ -40,7 +40,7 @@ As described before, is is required to map your data to ShipEngine. The mapping 
 
 > The fields `addressLine1`, `cityLocality`, `stateProvince` and `countryCode` are required.
 
-By default the mapping is set to same fields names:
+By default, the mapping is set to the same field names:
 
 ```json
 {
@@ -58,11 +58,11 @@ By default the mapping is set to same fields names:
 }
 ```
 
-Let's see some examples:
+Here are some examples:
 
-#### Mapping document with flattened structure
+#### Example 1: Mapping document with flattened structure
 
-The request params:
+If the request parameter has the following structure:
 
 ```javascript
 {
@@ -71,11 +71,11 @@ The request params:
     city: 'London',
     state: 'Westminster',
     country: 'UK',
-    postal_code: 'NW1 6XE',
+    postal_code: 'NW1 6XE'
 }
 ```
 
-our mapping JSON should be:
+Then the mapping JSON should have a structure as follows:
 
 ```json
 {
@@ -84,13 +84,13 @@ our mapping JSON should be:
     "cityLocality": "city",
     "stateProvince": "state",
     "countryCode": "country",
-    "postalCode": "postal_code",
+    "postalCode": "postal_code"
 }
 ```
 
-#### Mapping document with nested fields
+#### Example 2: Mapping document with nested fields
 
-The request params:
+If the request parameter has the following structure:
 
 ```javascript
 {
@@ -106,12 +106,12 @@ The request params:
         },
         state: 'Westminster',
         country: 'UK',
-        postalCode: 'NW1 6XE',
+        postalCode: 'NW1 6XE'
     }
 }
 ```
 
-our mapping JSON should be:
+Then the mapping JSON should have a structure as follows:
 
 ```json
 {
@@ -120,6 +120,11 @@ our mapping JSON should be:
     "cityLocality": "address.city.name",
     "stateProvince": "address.state",
     "countryCode": "address.country",
-    "postalCode": "address.postalCode",
+    "postalCode": "address.postalCode"
 }
 ```
+
+### Resources
+
+- [ShipEngine API Management page](https://app.shipengine.com/#/portal/apimanagement)
+- [ShipEngine Address Validation](https://www.shipengine.com/docs/addresses/validation/)
