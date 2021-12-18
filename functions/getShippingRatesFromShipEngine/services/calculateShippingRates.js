@@ -13,7 +13,7 @@ const calculateShippingRates = async ({ shipmentData, carriers }) => {
                 carrierIds: carriers,
             },
         });
-        return get(result, 'rateResponse.rates');
+        return get(result, 'rateResponse');
     } catch (error) {
         Logger.error('CALCULATE_SHIPPING_RATES', {
             errorMessage: error.message,
