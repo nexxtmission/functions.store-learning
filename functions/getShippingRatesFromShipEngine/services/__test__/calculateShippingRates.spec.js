@@ -5,7 +5,7 @@ const shipengine = require('../shipengine');
 jest.mock('firebase-functions/lib/logger');
 jest.mock('../shipengine', () => ({
     getRatesWithShipmentDetails: jest.fn(
-        () => Promise.resolve({ rateResponse: { rates: 'calculated rates' } }),
+        () => Promise.resolve({ rateResponse: 'calculated rates' }),
     ),
 }));
 
