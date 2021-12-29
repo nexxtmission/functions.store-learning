@@ -14,7 +14,7 @@ To install this function, add the required information to the form with the foll
 - **SHIPENGINE_API_KEY**: The ShipEngine API Key.
 - **INPUT_DATA_MAPPING**: A JSON object that defines how the data is mapped to ShipEngine API request structure. See section **Data mapping**.
 - **OUTPUT_DATA_MAPPING**: A JSON object that defines how the response data is mapped to your own structure. See section **Data mapping**.
-- **COLLECTION_PATH**: The collection path to store tracking data. Documents created will be have the tracking number as ID.
+- **COLLECTION_PATH**: The collection path to store tracking data. Documents created will have the tracking number as ID.
 
 > Only the fields `SHIPENGINE_API_KEY` and `COLLECTION_PATH` are required.
 
