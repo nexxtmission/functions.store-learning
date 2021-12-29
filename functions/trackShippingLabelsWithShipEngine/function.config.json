@@ -1,0 +1,112 @@
+{
+    "name": "trackShippingLabelsWithShipEngine",
+    "description": "Retrieve Live label tracking updates from a ShipEngine account",
+    "tags": [],
+    "trigger": {
+        "provider": "https",
+        "event": "call"
+    },
+    "env": [
+        {
+            "name": "SHIPENGINE_API_KEY",
+            "type": "text",
+            "description": "The ShipEngine API Key.",
+            "required": true
+        },
+        {
+            "name": "INPUT_DATA_MAPPING",
+            "type": "json",
+            "description": "the schema for input data",
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "labelId": { "type": "string" },
+                    "trackingNumber": { "type": "string" },
+                    "carrierCode": { "type": "string" }
+                }
+            },
+            "default": {
+                "labelId": "labelId",
+                "trackingNumber": "trackingNumber",
+                "carrierCode": "carrierCode"
+            }
+        },
+        {
+            "name": "OUTPUT_DATA_MAPPING",
+            "type": "json",
+            "description": "the schema for output data",
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "trackingNumber": { "type": "string" },
+                    "statusCode": { "type": "string" },
+                    "statusDescription": { "type": "string" },
+                    "carrierStatusCode": { "type": "string" },
+                    "carrierDetailCode": { "type": "string" },
+                    "carrierStatusDescription": { "type": "string" },
+                    "shipDate": { "type": "string" },
+                    "estimatedDeliveryDate": { "type": "string" },
+                    "actualDeliveryDate": { "type": "string" },
+                    "exceptionDescription": { "type": "string" },
+                    "events": {
+                        "type": "object",
+                        "properties": {
+                            "root": { "type": "string" },
+                            "occurredAt": { "type": "string" },
+                            "carrierOccurredAt": { "type": "string" },
+                            "description": { "type": "string" },
+                            "cityLocality": { "type": "string" },
+                            "stateProvince": { "type": "string" },
+                            "postalCode": { "type": "string" },
+                            "countryCode": { "type": "string" },
+                            "companyName": { "type": "string" },
+                            "signer": { "type": "string" },
+                            "eventCode": { "type": "string" },
+                            "statusCode": { "type": "string" },
+                            "carrierStatusCode": { "type": "string" },
+                            "carrierDetailCode": { "type": "string" },
+                            "latitude": { "type": "string" },
+                            "longitude": { "type": "string" }
+                        }
+                    }    
+                }
+            },
+            "default": {
+                "trackingNumber": "trackingNumber",
+                "statusCode": "statusCode",
+                "statusDescription": "statusDescription",
+                "carrierStatusCode": "carrierStatusCode",
+                "carrierDetailCode": "carrierDetailCode",
+                "carrierStatusDescription": "carrierStatusDescription",
+                "shipDate": "shipDate",
+                "estimatedDeliveryDate": "estimatedDeliveryDate",
+                "actualDeliveryDate": "actualDeliveryDate",
+                "exceptionDescription": "exceptionDescription",
+                "events": {
+                    "root": "events",
+                    "occurredAt": "occurredAt",
+                    "carrierOccurredAt": "carrierOccurredAt",
+                    "description": "description",
+                    "cityLocality": "cityLocality",
+                    "stateProvince": "stateProvince",
+                    "postalCode": "postalCode",
+                    "countryCode": "countryCode",
+                    "companyName": "companyName",
+                    "signer": "signer",
+                    "eventCode": "eventCode",
+                    "statusCode": "statusCode",
+                    "carrierStatusCode": "carrierStatusCode",
+                    "carrierDetailCode": "carrierDetailCode",
+                    "latitude": "latitude",
+                    "longitude": "longitude"
+                }
+            }
+        },
+        {
+            "name": "COLLECTION_PATH",
+            "type": "firestoreCollectionPath",
+            "description": "The firestore collection path to store data in",
+            "required": true
+        }
+    ]
+}
