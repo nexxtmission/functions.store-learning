@@ -1,7 +1,11 @@
 {
     "name": "trackShippingLabelsWithShipEngine",
-    "description": "Retrieve Live label tracking updates from a ShipEngine account",
-    "tags": [],
+    "description": "Retrieve live label tracking updates from a ShipEngine account.",
+    "tags": [
+        "tracking",
+        "ShipEngine",
+        "shipping labels"
+    ],
     "trigger": {
         "provider": "https",
         "event": "call"
@@ -16,7 +20,7 @@
         {
             "name": "INPUT_DATA_MAPPING",
             "type": "json",
-            "description": "the schema for input data",
+            "description": "A JSON object that defines how the data is mapped to ShipEngine API request structure.",
             "schema": {
                 "type": "object",
                 "properties": {
@@ -34,7 +38,7 @@
         {
             "name": "OUTPUT_DATA_MAPPING",
             "type": "json",
-            "description": "the schema for output data",
+            "description": "A JSON object that defines how the response data is mapped to your own structure.",
             "schema": {
                 "type": "object",
                 "properties": {
@@ -105,7 +109,7 @@
         {
             "name": "COLLECTION_PATH",
             "type": "firestoreCollectionPath",
-            "description": "The firestore collection path to store data in",
+            "description": "The Firestore collection path to store tracking data.",
             "required": true
         }
     ]
