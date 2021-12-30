@@ -1,6 +1,6 @@
 ### How this function works
 
-You can use this function to [get the current status of a package](https://www.shipengine.com/docs/tracking/) with [ShipEngine](https://www.shipengine.com/).
+You can use this function to [get the current status of a package](https://www.shipengine.com/docs/tracking/) with [ShipEngine](https://www.shipengine.com/). You can retrieve up-to-date tracking data for any shipment from any carrier using a valid tracking number and a supported carrier code or a ShipEngine label ID.
 
 ### Prerequisites
 
@@ -14,9 +14,9 @@ To install this function, add the required information to the form with the foll
 - **SHIPENGINE_API_KEY**: The ShipEngine API Key.
 - **INPUT_DATA_MAPPING**: A JSON object that defines how the data is mapped to ShipEngine API request structure. See section **Data mapping**.
 - **OUTPUT_DATA_MAPPING**: A JSON object that defines how the response data is mapped to your own structure. See section **Data mapping**.
-- **COLLECTION_PATH**: The collection path to store tracking data. Documents created will have the tracking number as ID.
+- **COLLECTION_PATH**: The collection path to store tracking data. The documents created will have the tracking number as ID.
 
-> Only the fields `SHIPENGINE_API_KEY` and `COLLECTION_PATH` are required.
+> Only the `SHIPENGINE_API_KEY` and `COLLECTION_PATH` fields are required.
 
 ### Using this function
 
@@ -24,7 +24,7 @@ Once the function is installed, you can start using it in your project.
 
 Call the function passing either the `labelId` obtained from ShipEngine (see [Create a Label](https://www.shipengine.com/docs/labels/create-a-label/)) or passing the `trackingNumber` and `carrierCode` as described in [Track a Package](https://www.shipengine.com/docs/tracking/).
 
-> A full response object can be found in the *Example Response* from [Track a Package](https://www.shipengine.com/docs/tracking/) section in ShipEngine API docs. (Use camel case for properties (e.g., `trackingNumber` instead of `tracking_number`).)
+> A full response object can be found in the *Example Response* from [Track a Package](https://www.shipengine.com/docs/tracking/) section in ShipEngine API docs. Use camel case for properties (e.g., `trackingNumber` instead of `tracking_number`).
 
 ### Usage examples
 
@@ -56,11 +56,11 @@ const rates = await trackShippingLabels({
 
 As described before, you can map your data either to ShipEngine API request object or map ShipEngine responses to your own structure.
 
-Lets see how to map data for input or output data.
+Let's see how to map data for input or output data.
 
 #### Mapping input data
 
-To track a package you can either use a `labelId` if the label was created using ShipEngine API or use a `trackingNumber` and a `carrierCode` for other packages.
+To track a package, you can either use a `labelId` if the label was created using ShipEngine API or use a `trackingNumber` and a `carrierCode` for other packages.
 
 The input mapping object is defined as:
 
@@ -72,7 +72,7 @@ The input mapping object is defined as:
 }
 ```
 
-For example, lets asume we want to submit an object like:
+For example, let's say we want to submit an object like:
 
 ```js
 {
@@ -86,7 +86,7 @@ For example, lets asume we want to submit an object like:
 }
 ```
 
-our input map should be
+Then our input map should have a structure as follows:
 
 ```json
 {
@@ -95,11 +95,11 @@ our input map should be
 }
 ```
 
->Note that we omit `labelId` as we are only interested on tracking using a tracking number and a carrier code.
+>Note that we omit `labelId` as we are only interested in tracking using a tracking number and carrier code.
 
 #### Mapping output data
 
-Once we got the tracking information for our package, we may want to have a different structure that meet our app needs. You can map result as defined:
+Once we got the tracking information for our package, we may want to have a different structure that meets our app needs. You can map the results as defined:
 
 ```json
 {
@@ -134,9 +134,9 @@ Once we got the tracking information for our package, we may want to have a diff
 }
 ```
 
->By default all fields are mapped to the same name.
+>By default, all fields are mapped to the same name.
 
-For example, lets asume that ShipEngine response was:
+For example, let's say that ShipEngine response was:
 
 ```js
 {
@@ -189,7 +189,7 @@ And we want to map that response to an object like:
 }
 ```
 
-The output map should be:
+Then the output map should should have a structure as follows:
 
 ```json
 {
@@ -207,7 +207,7 @@ The output map should be:
 }
 ```
 
-> Note that you don't have to include all fields in your mapping. Only those you you want to be included in the response.
+> Note that you don't have to include all the fields in your mapping, only the ones that you want included in the response.
 
 ### Resources
 
