@@ -99,7 +99,7 @@ Then our input map should have a structure as follows:
 
 #### Mapping output data
 
-Once we got the tracking information for our package, we may want to have a different structure that meets our app needs. You can map the results as defined:
+Once we get the tracking information for our package, we may want to have a different structure that meets the needs of our application. You can map the results as defined:
 
 ```json
 {
@@ -189,7 +189,7 @@ And we want to map that response to an object like:
 }
 ```
 
-Then the output map should should have a structure as follows:
+Then the output map should have a structure as follows:
 
 ```json
 {
@@ -207,7 +207,7 @@ Then the output map should should have a structure as follows:
 }
 ```
 
-> Note that you don't have to include all the fields in your mapping, only the ones that you want included in the response.
+> Note that you don't have to include all the fields in your mapping, only the ones that you want to be included in the response.
 
 ### Resources
 
